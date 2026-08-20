@@ -14,6 +14,7 @@ Definição adotada:
 - Uma Change Set pode conter um ou mais commits.
 - O identificador da Change Set usa três dígitos: `CS-001`, `CS-002`, …, `CS-999`.
 - Após `CS-999`, a sequência continua por blocos alfabéticos: `CS-A01` a `CS-A99`, depois `CS-B01` a `CS-B99`, e assim sucessivamente.
+- Uma antiga Sprint decimal `P.Q` representa uma Sub-Change Set somente quando teve implementação e revisão próprias. Nesse caso, converta-a para `CS-PPP-QQ`.
 - “Sessão” é a interação com um agente; “commit” é o registro Git. Não use esses termos como sinônimos de Change Set.
 
 Escopo autorizado:
@@ -35,6 +36,8 @@ Convenção-alvo — aplique somente aos itens que existirem e fizerem parte da 
 |---|---|
 | Sprint 1 / Sprint 01 | Change Set CS-001 |
 | sprint-1 / sprint-01 | cs-001 |
+| Sprint 04.5 / sprint-04.5 | Sub-Change Set CS-004-05 / cs-004-05 |
+| Sprint 04.6 / sprint-04.6 | Sub-Change Set CS-004-06 / cs-004-06 |
 | docs/sprints/ | docs/change-sets/ |
 | docs/sprints/indice-sprints.md | docs/change-sets/index.md |
 | modelo-especificacao-sprint.md | modelo-especificacao-change-set.md |
@@ -42,13 +45,15 @@ Convenção-alvo — aplique somente aos itens que existirem e fizerem parte da 
 | modelo-pos-sprint.md | modelo-pos-change-set.md |
 | pós-sprint | pós-Change Set |
 
-Converta a numeração existente para três dígitos, preservando seu valor: `sprint-1` e `sprint-01` tornam-se `cs-001`; `Sprint 12` torna-se `Change Set CS-012`; `sprint-100` torna-se `cs-100`. Não invente, reordene ou reutilize números. A sequência alfabética (`CS-A01`, `CS-B01` etc.) só é usada para novas Change Sets após `CS-999`; não a aplique nesta migração salvo se ela já existir no projeto.
+Converta a numeração principal para três dígitos, preservando seu valor: `sprint-1` e `sprint-01` tornam-se `cs-001`; `Sprint 12` torna-se `Change Set CS-012`; `sprint-100` torna-se `cs-100`. Para um identificador decimal `Sprint P.Q` que represente uma Sub-Change Set independente, use `CS-PPP-QQ`: `Sprint 04.5` torna-se `CS-004-05` e `Sprint 12.10` torna-se `CS-012-10`. Não invente, reordene ou reutilize números. A sequência alfabética (`CS-A01`, `CS-B01` etc.) só é usada para novas Change Sets após `CS-999`; não a aplique nesta migração salvo se ela já existir no projeto.
+
+Quando uma Sprint decimal tiver implementação e revisão próprias, migre seus documentos para uma pasta independente, como `docs/change-sets/cs-004-05/`, e registre-a no índice como Sub-Change Set da Change Set principal. Quando a subdivisão for apenas uma tarefa interna sem ciclo próprio, mantenha-a no planejamento ou especificação do item principal e não atribua um novo ID.
 
 Procedimento:
 
 1. Inspecione `git status --short` e registre alterações pré-existentes. Não as toque.
 2. Localize os documentos e referências candidatas com `rg` e `find`, começando por `docs/`. Monte um inventário breve de diretórios, arquivos, links e termos que serão afetados.
-3. Se a estrutura real divergir materialmente da convenção-alvo ou houver ambiguidade que possa alterar conteúdo fora do escopo, pare antes de editar e apresente a ambiguidade com os caminhos envolvidos.
+3. Identifique Sprints decimais. Se os documentos confirmarem implementação e revisão próprias, aplique a regra de Sub-Change Set. Se a natureza da subdivisão não puder ser confirmada, ou se houver mais de uma subdivisão decimal (por exemplo, `Sprint 04.5.1`), pare antes de editar e apresente a ambiguidade com os caminhos envolvidos.
 4. Renomeie diretórios e arquivos documentais necessários usando `git mv` quando forem rastreados.
 5. Atualize o conteúdo Markdown: títulos, termos, caminhos, links relativos, rótulos de navegação, modelos e instruções de criação de novas Change Sets.
 6. Não altere automaticamente referências históricas que sejam nomes reais de commits, URLs externas, hashes ou transcrições. Liste-as como exceções se permanecerem com “Sprint”.

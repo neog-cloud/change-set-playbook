@@ -21,6 +21,8 @@ Planejamento → Especificação → Validação da especificação → Implemen
 
 Os IDs ordenam alfabeticamente. A letra só passa a ser usada após `CS-999`.
 
+Sub-Change Sets que tiveram implementação e revisão próprias usam o ID do item principal seguido de um sufixo de dois dígitos: `CS-004-05`, `CS-004-06`. Eles não consomem um novo ID principal.
+
 ## Roteamento GPT-5.6
 
 | Etapa | Modelo | Esforço |
@@ -46,7 +48,7 @@ examples/               Exemplos fictícios completos
 
 ## Uso rápido
 
-1. Copie os modelos de `templates/change-set/` para `docs/change-sets/cs-[ID]/` no projeto-alvo.
+1. Copie os modelos de `templates/change-set/` para `docs/change-sets/cs-[ID]/` no projeto-alvo. Use uma pasta própria para cada Sub-Change Set independente.
 2. Preencha planejamento e especificação antes da implementação.
 3. Faça a revisão em uma sessão independente.
 4. Execute o pós-Change Set somente após status `APROVADO`.

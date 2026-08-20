@@ -1,4 +1,4 @@
-# Revisão de Change Set: CS-[ID] — [NOME]
+# Revisão de [Change Set / Sub-Change Set]: CS-[ID] — [NOME]
 
 Revise a implementação da Change Set usando a documentação e a base indicadas abaixo. Produza somente o relatório de revisão; **não modifique código, testes ou documentação do projeto**.
 
@@ -6,7 +6,7 @@ Revise a implementação da Change Set usando a documentação e a base indicada
 **Base do diff:** `[branch / commit / tag de referência]` → `[HEAD / branch revisada]`.
 **Documentos de entrada:** `[planejamento]`, `[especificação]`, `[resultados de validação]`.
 
-**Convenção de ID:** `CS-001` a `CS-999`; após `CS-999`, use `CS-A01` a `CS-A99`, depois `CS-B01` a `CS-B99`, e assim sucessivamente.
+**Convenção de ID:** `CS-001` a `CS-999`; após `CS-999`, use `CS-A01` a `CS-A99`, depois `CS-B01` a `CS-B99`, e assim sucessivamente. Para uma Sub-Change Set independente, use `CS-[ID-PRINCIPAL]-[SUBITEM]`, como `CS-004-05`.
 
 ## Instruções de auditoria
 

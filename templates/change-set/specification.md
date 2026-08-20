@@ -1,10 +1,10 @@
-# Especificação de Change Set: CS-[ID] — [NOME]
+# Especificação de [Change Set / Sub-Change Set]: CS-[ID] — [NOME]
 
 **Idioma:** português do Brasil.
 **Status:** rascunho / validada / em implementação / concluída.
 **Base técnica:** branch `[NOME]`, commit `[SHA]` ou tag `[REF]`.
 
-**Convenção de ID:** `CS-001` a `CS-999`; após `CS-999`, use `CS-A01` a `CS-A99`, depois `CS-B01` a `CS-B99`, e assim sucessivamente.
+**Convenção de ID:** `CS-001` a `CS-999`; após `CS-999`, use `CS-A01` a `CS-A99`, depois `CS-B01` a `CS-B99`, e assim sucessivamente. Para uma Sub-Change Set independente, use `CS-[ID-PRINCIPAL]-[SUBITEM]`, como `CS-004-05`.
 
 ## 1. Contexto e objetivo
 
