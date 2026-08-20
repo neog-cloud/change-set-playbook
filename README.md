@@ -1,0 +1,58 @@
+# Change Set Playbook
+
+Modelos, prompts e guias para conduzir mudanças de engenharia assistidas por IA com rastreabilidade, revisão independente e validação.
+
+## O que é uma Change Set?
+
+Uma **Change Set** é uma unidade rastreável de mudança de engenharia: funcionalidade, correção, refatoração, investigação técnica ou alteração documental. Ela pode conter uma ou mais sessões com agentes de IA e um ou mais commits Git.
+
+```text
+Planejamento → Especificação → Validação da especificação → Implementação
+→ Revisão independente → Correções iterativas → Aprovação → Pós-Change Set
+```
+
+## Convenção de identificação
+
+| Faixa | Formato | Exemplo |
+|---|---|---|
+| 1 a 999 | `CS-001` a `CS-999` | `CS-042` |
+| Após 999 | `CS-A01` a `CS-A99` | `CS-A01` |
+| Próximos blocos | `CS-B01`, `CS-C01` etc. | `CS-B01` |
+
+Os IDs ordenam alfabeticamente. A letra só passa a ser usada após `CS-999`.
+
+## Roteamento GPT-5.6
+
+| Etapa | Modelo | Esforço |
+|---|---|---|
+| Organização, documentação e trabalho mecânico | Luna | low / medium |
+| Planejamento, especificação e implementação normal | Terra | medium / high |
+| Arquitetura, segurança e revisão de alto risco | Sol | high / xhigh |
+
+> Luna executa; Terra desenvolve; Sol decide e audita.
+
+Consulte o [guia de roteamento](docs/model-routing/gpt-5.6-luna-terra-sol.md) para detalhes.
+
+## Estrutura
+
+```text
+templates/change-set/   Modelos de especificação, revisão e pós-Change Set
+prompts/                Prompts reutilizáveis para tarefas operacionais
+docs/methodology/       Método e convenções
+docs/model-routing/     Uso dos modelos GPT-5.6
+docs/guides/            Guias de adoção e manutenção
+examples/               Exemplos fictícios completos
+```
+
+## Uso rápido
+
+1. Copie os modelos de `templates/change-set/` para `docs/change-sets/cs-[ID]/` no projeto-alvo.
+2. Preencha planejamento e especificação antes da implementação.
+3. Faça a revisão em uma sessão independente.
+4. Execute o pós-Change Set somente após status `APROVADO`.
+
+O prompt para migrar documentação legada de “Sprint” para “Change Set” está em [prompts/migration-sprint-to-change-set.md](prompts/migration-sprint-to-change-set.md).
+
+## Licença
+
+Este material está licenciado sob [Creative Commons Attribution 4.0 International](LICENSE) (CC BY 4.0).
