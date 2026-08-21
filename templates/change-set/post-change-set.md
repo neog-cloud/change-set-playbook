@@ -11,6 +11,7 @@ Execute este procedimento somente após a última revisão da Change Set receber
 - [ ] Testes, lint, formatter, geração de contrato e validações aplicáveis executados com sucesso.
 - [ ] `git status` verificado; não há alterações não relacionadas à Change Set.
 - [ ] Diff final revisado; os arquivos alterados correspondem ao escopo aprovado.
+- [ ] Nenhum arquivo ou diretório criado/renomeado contém espaços; use `_` no lugar deles.
 
 ## 1. Commit da implementação
 

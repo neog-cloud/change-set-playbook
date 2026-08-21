@@ -20,6 +20,7 @@ Definição adotada:
 Escopo autorizado:
 - Apenas documentação e artefatos de documentação: arquivos Markdown, diretórios de documentação, links internos, índices, modelos e instruções operacionais presentes na documentação.
 - Renomeie arquivos e diretórios documentais quando necessário para refletir a nova convenção.
+- Não crie ou preserve espaços em nomes de arquivos e diretórios; substitua cada espaço por `_`.
 - Atualize links Markdown relativos, referências de caminhos e âncoras afetadas.
 - Use `git mv` para arquivos e diretórios rastreados pelo Git, preservando o histórico de renomeação.
 

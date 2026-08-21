@@ -10,3 +10,7 @@ Todas as mudanças relevantes deste repositório serão registradas neste arquiv
 - Modelos de especificação, revisão e pós-Change Set.
 - Prompt de migração de “Sprint” para “Change Set”.
 - Guia de roteamento GPT-5.6 Luna, Terra e Sol.
+
+### Changed
+
+- Orientação para não usar espaços em nomes de arquivos e diretórios, substituindo-os por `_`.

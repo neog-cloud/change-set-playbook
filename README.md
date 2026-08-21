@@ -46,6 +46,10 @@ docs/guides/            Guias de adoção e manutenção
 examples/               Exemplos fictícios completos
 ```
 
+## Convenção de nomes de arquivos
+
+Não crie arquivos ou diretórios com espaços no nome. Use nomes técnicos em minúsculas e substitua cada espaço por sublinhado (`_`), por exemplo, `relatorio_revisao_cs-001.md`. Essa regra vale também para arquivos copiados dos modelos; títulos legíveis devem ficar dentro do conteúdo do arquivo, não no nome do caminho.
+
 ## Uso rápido
 
 1. Copie os modelos de `templates/change-set/` para `docs/change-sets/cs-[ID]/` no projeto-alvo. Use uma pasta própria para cada Sub-Change Set independente.

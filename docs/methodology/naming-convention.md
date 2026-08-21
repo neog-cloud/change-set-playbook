@@ -38,4 +38,6 @@ docs/change-sets/
     └── review-cs-004-05.md
 ```
 
+Nomes de arquivos e diretórios não podem conter espaços. Use nomes técnicos em minúsculas e substitua espaços por `_`, como em `relatorio_revisao_cs-001.md`. Não transforme títulos visíveis, como `Change Set CS-001`, em nomes de arquivo.
+
 Nomes de diretório usam minúsculas. Nomes visíveis usam `Change Set CS-001` ou `Sub-Change Set CS-004-05`.

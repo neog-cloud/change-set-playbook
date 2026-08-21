@@ -75,7 +75,8 @@ Inclua critérios de sucesso, falha, regressão e caso de borda aplicáveis. Pre
 4. Implemente somente o escopo desta Change Set, preservando contratos e comportamentos fora de escopo.
 5. Execute as validações aplicáveis e corrija falhas relacionadas à Change Set.
 6. Não faça commit, não atualize `docs/change-sets/index.md` ou `source-tree.md` e não altere arquivos externos ao escopo sem pedido explícito.
-7. Entregue um resumo conciso com: critérios atendidos, arquivos alterados/criados, arquivos adicionais e justificativas, comandos executados e pendências.
+7. Ao criar ou renomear arquivos e diretórios, não use espaços: escreva nomes técnicos em minúsculas e substitua espaços por `_`.
+8. Entregue um resumo conciso com: critérios atendidos, arquivos alterados/criados, arquivos adicionais e justificativas, comandos executados e pendências.
 
 ## 8. Gate de entrada para implementação
 

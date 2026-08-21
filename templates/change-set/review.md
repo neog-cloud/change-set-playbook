@@ -8,6 +8,8 @@ Revise a implementação da Change Set usando a documentação e a base indicada
 
 **Convenção de ID:** `CS-001` a `CS-999`; após `CS-999`, use `CS-A01` a `CS-A99`, depois `CS-B01` a `CS-B99`, e assim sucessivamente. Para uma Sub-Change Set independente, use `CS-[ID-PRINCIPAL]-[SUBITEM]`, como `CS-004-05`.
 
+**Convenção de arquivos:** não crie arquivos ou diretórios com espaços. Use nomes técnicos em minúsculas e substitua espaços por `_`; preserve o título legível apenas dentro do documento. O relatório deve ser salvo em `docs/change-sets/cs-[ID]/review-cs-[ID].md` ou, quando o projeto adotar nomes descritivos, em um caminho equivalente sem espaços, como `docs/change-sets/cs-[ID]/relatorio_revisao_cs-[ID].md`.
+
 ## Instruções de auditoria
 
 **Configuração recomendada:** GPT-5.6 Terra / `high`. Use GPT-5.6 Sol / `high` ou `xhigh` para segurança, concorrência, migração, dados financeiros, autenticação ou alteração transversal.

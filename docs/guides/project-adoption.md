@@ -6,6 +6,8 @@
 4. Use sessões independentes para implementação e revisão.
 5. Atualize o índice e a documentação estrutural no pós-Change Set.
 
+Ao criar os arquivos, não use espaços em nomes de arquivos ou diretórios. Use nomes técnicos em minúsculas e substitua espaços por `_`, por exemplo, `relatorio_revisao_cs-001.md`. Mantenha nomes legíveis, como “Relatório de Revisão”, no título do documento.
+
 Quando uma Change Set possuir subitens com implementação e revisão próprias, crie uma pasta independente para cada Sub-Change Set, como `docs/change-sets/cs-004-05/`.
 
 Para um projeto que usa “Sprint”, utilize o prompt em `prompts/migration-sprint-to-change-set.md`.
