@@ -13,6 +13,9 @@ Todas as mudanças relevantes deste repositório serão registradas neste arquiv
 - Checklist de implementação na especificação, para decompor e acompanhar o trabalho da Change Set.
 - Modelo `planning.md` para descoberta e alinhamento multidisciplinar antes da especificação.
 - Exemplo fictício completo de planejamento, especificação e revisão para `CS-001`.
+- Prompt para transformar issues em `planning.md`.
+- Prompt para transformar `planning.md` em `specification.md`.
+- Prompt para revisar `specification.md` antes da implementação.
 
 ### Changed
 
