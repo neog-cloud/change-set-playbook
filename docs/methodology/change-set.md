@@ -10,6 +10,12 @@ Uma Change Set separa três conceitos:
 
 O objetivo é que cada mudança tenha contexto, critérios verificáveis, implementação controlada, revisão independente e registro final confiável.
 
+## Checklist de implementação
+
+A especificação deve manter um checklist de unidades de trabalho pequenas e concretas. Ele serve como roteiro de implementação e permite acompanhar quais partes do escopo já foram concluídas e validadas. O checklist não substitui os critérios de aceite: os itens descrevem o trabalho a realizar, enquanto os critérios comprovam o resultado observável.
+
+Quando um item do checklist exigir planejamento, implementação e revisão próprios, ele deve se tornar uma Sub-Change Set. Itens sem ciclo próprio permanecem na especificação da Change Set principal.
+
 ## Sub-Change Sets
 
 Quando uma subdivisão de uma Change Set teve planejamento, implementação e revisão próprios, ela é uma **Sub-Change Set**. Ela recebe o ID do item principal seguido de um sufixo de dois dígitos: `CS-004-05` e `CS-004-06` são Sub-Change Sets de `CS-004`.

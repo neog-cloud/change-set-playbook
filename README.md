@@ -53,7 +53,7 @@ Não crie arquivos ou diretórios com espaços no nome. Use nomes técnicos em m
 ## Uso rápido
 
 1. Copie os modelos de `templates/change-set/` para `docs/change-sets/cs-[ID]/` no projeto-alvo. Use uma pasta própria para cada Sub-Change Set independente.
-2. Preencha planejamento e especificação antes da implementação.
+2. Preencha planejamento, especificação e o checklist de implementação antes da implementação.
 3. Faça a revisão em uma sessão independente.
 4. Execute o pós-Change Set somente após status `APROVADO`.
 

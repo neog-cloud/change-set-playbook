@@ -30,14 +30,24 @@
 - **Segurança e autorização:** [Perfis, tenant isolation, dados sensíveis ou “não se aplica”.]
 - **Observabilidade:** [Logs, métricas, auditoria e informações que não podem ser registradas.]
 
-## 3. Premissas técnicas
+## 3. Checklist de implementação
+
+Liste unidades de trabalho pequenas, concretas e verificáveis. Cada item deve indicar o resultado esperado ou os arquivos afetados; agrupe por etapa quando ajudar a execução. Este checklist orienta a implementação e o acompanhamento do escopo, mas não substitui os critérios de aceite da seção 6.
+
+- [ ] **CI-01 — [Etapa ou componente]:** [Alteração a implementar e resultado esperado.]
+- [ ] **CI-02 — [Etapa ou componente]:** [Alteração a implementar e resultado esperado.]
+- [ ] **CI-03 — [Testes, documentação ou validação]:** [Alteração a implementar e resultado esperado.]
+
+Mantenha os itens desmarcados até a alteração correspondente estar implementada e validada. Se o checklist revelar uma parte com planejamento, implementação e revisão próprios, crie uma Sub-Change Set independente; caso contrário, mantenha-a como item desta especificação.
+
+## 4. Premissas técnicas
 
 - **Stack e versões relevantes:** [Ex.: Go 1.xx, React, PostgreSQL, SQLC.]
 - **Arquitetura e convenções:** [Padrões obrigatórios do projeto.]
 - **Dependências permitidas / proibidas:** [Liste ou escreva “nenhuma nova dependência”.]
 - **Referências de contexto:** [Links ou caminhos para planejamento, decisões e trechos relevantes de `docs/change-sets/index.md` e `source-tree.md`.]
 
-## 4. Mapa inicial de contexto
+## 5. Mapa inicial de contexto
 
 | Arquivo ou diretório | Papel | Ação prevista |
 |---|---|---|
@@ -45,7 +55,7 @@
 
 O mapa é uma referência inicial, não uma lista exaustiva. Arquivos adicionais podem ser modificados somente quando estritamente necessários para cumprir a especificação; eles devem constar do resumo final, com justificativa.
 
-## 5. Critérios de aceite
+## 6. Critérios de aceite
 
 | ID | Cenário observável | Resultado esperado | Evidência / teste |
 |---|---|---|---|
@@ -55,7 +65,7 @@ O mapa é uma referência inicial, não uma lista exaustiva. Arquivos adicionais
 
 Inclua critérios de sucesso, falha, regressão e caso de borda aplicáveis. Prefira comportamento verificável a detalhes internos de implementação.
 
-## 6. Estratégia de validação
+## 7. Estratégia de validação
 
 - **Testes a criar ou atualizar:** [Caminhos e cenários.]
 - **Comandos obrigatórios:**
@@ -65,24 +75,26 @@ Inclua critérios de sucesso, falha, regressão e caso de borda aplicáveis. Pre
   - `[geração de contrato, migração ou verificação adicional]`
 - **Condição de conclusão:** todos os comandos aplicáveis devem passar; o relatório final deve registrar comando e resultado.
 
-## 7. Instruções para a sessão de implementação
+## 8. Instruções para a sessão de implementação
 
 **Configuração recomendada:** GPT-5.6 Terra / `medium`. Use Terra / `high` se a tarefa exigir investigação adicional. Reserve Sol para mudança de alto risco, arquitetura, segurança, migração ou impacto transversal.
 
 1. Leia esta especificação, o planejamento associado e os arquivos do mapa inicial.
 2. Confirme decisões pendentes antes de implementar; não invente requisito material ausente.
-3. Crie ou ajuste primeiro os testes definidos na seção 6 quando a tarefa permitir TDD.
-4. Implemente somente o escopo desta Change Set, preservando contratos e comportamentos fora de escopo.
-5. Execute as validações aplicáveis e corrija falhas relacionadas à Change Set.
-6. Não faça commit, não atualize `docs/change-sets/index.md` ou `source-tree.md` e não altere arquivos externos ao escopo sem pedido explícito.
-7. Ao criar ou renomear arquivos e diretórios, não use espaços: escreva nomes técnicos em minúsculas e substitua espaços por `_`.
-8. Entregue um resumo conciso com: critérios atendidos, arquivos alterados/criados, arquivos adicionais e justificativas, comandos executados e pendências.
+3. Use o checklist da seção 3 como roteiro; atualize cada item somente após implementar e validar a alteração correspondente.
+4. Crie ou ajuste primeiro os testes definidos na seção 7 quando a tarefa permitir TDD.
+5. Implemente somente o escopo desta Change Set, preservando contratos e comportamentos fora de escopo.
+6. Execute as validações aplicáveis e corrija falhas relacionadas à Change Set.
+7. Não faça commit, não atualize `docs/change-sets/index.md` ou `source-tree.md` e não altere arquivos externos ao escopo sem pedido explícito.
+8. Ao criar ou renomear arquivos e diretórios, não use espaços: escreva nomes técnicos em minúsculas e substitua espaços por `_`.
+9. Entregue um resumo conciso com: critérios atendidos, itens do checklist concluídos, arquivos alterados/criados, arquivos adicionais e justificativas, comandos executados e pendências.
 
-## 8. Gate de entrada para implementação
+## 9. Gate de entrada para implementação
 
 Antes da implementação, uma sessão independente deve confirmar:
 
 - critérios de aceite testáveis;
+- checklist de implementação detalhado e compatível com o escopo;
 - escopo e não escopo claros;
 - contratos, riscos e decisões pendentes tratados;
 - comandos de validação definidos;

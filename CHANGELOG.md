@@ -10,6 +10,7 @@ Todas as mudanças relevantes deste repositório serão registradas neste arquiv
 - Modelos de especificação, revisão e pós-Change Set.
 - Prompt de migração de “Sprint” para “Change Set”.
 - Guia de roteamento GPT-5.6 Luna, Terra e Sol.
+- Checklist de implementação na especificação, para decompor e acompanhar o trabalho da Change Set.
 
 ### Changed
 
