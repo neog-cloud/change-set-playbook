@@ -4,7 +4,7 @@ Revise a implementação da Change Set usando a documentação e a base indicada
 
 **Idioma:** português do Brasil.
 **Base do diff:** `[branch / commit / tag de referência]` → `[HEAD / branch revisada]`.
-**Documentos de entrada:** `[planejamento]`, `[especificação]`, `[resultados de validação]`.
+**Documentos de entrada:** `[planning.md]`, `[especificação]`, `[resultados de validação]`.
 
 **Convenção de ID:** `CS-001` a `CS-999`; após `CS-999`, use `CS-A01` a `CS-A99`, depois `CS-B01` a `CS-B99`, e assim sucessivamente. Para uma Sub-Change Set independente, use `CS-[ID-PRINCIPAL]-[SUBITEM]`, como `CS-004-05`.
 
@@ -14,7 +14,7 @@ Revise a implementação da Change Set usando a documentação e a base indicada
 
 **Configuração recomendada:** GPT-5.6 Terra / `high`. Use GPT-5.6 Sol / `high` ou `xhigh` para segurança, concorrência, migração, dados financeiros, autenticação ou alteração transversal.
 
-1. Leia planejamento, especificação, diff e resultados de validação antes de concluir.
+1. Leia o `planning.md`, a especificação, o diff e os resultados de validação antes de concluir.
 2. Audite aderência ao escopo, critérios de aceite, testes, regressões, contratos, tratamento de erro, autorização/isolamento, dados e observabilidade quando aplicáveis.
 3. Execute somente verificações não destrutivas autorizadas pela Change Set. Registre comandos e resultados relevantes.
 4. Não presuma que um teste existente prova o critério: verifique o cenário e a qualidade da asserção.

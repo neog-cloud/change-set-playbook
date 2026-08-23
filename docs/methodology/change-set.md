@@ -10,6 +10,12 @@ Uma Change Set separa três conceitos:
 
 O objetivo é que cada mudança tenha contexto, critérios verificáveis, implementação controlada, revisão independente e registro final confiável.
 
+## Descoberta e planejamento
+
+Antes da especificação, registre o contexto em `planning.md`. Esse documento consolida o problema, o valor esperado, o caso de uso, contribuições de áreas distintas, decisões, dúvidas e riscos em linguagem acessível para pessoas técnicas e não técnicas.
+
+O planejamento orienta a especificação, mas não substitui seus elementos técnicos nem autoriza a implementação. A especificação deve traduzir os alinhamentos relevantes em escopo, contratos, checklist de implementação, critérios de aceite e validações.
+
 ## Checklist de implementação
 
 A especificação deve manter um checklist de unidades de trabalho pequenas e concretas. Ele serve como roteiro de implementação e permite acompanhar quais partes do escopo já foram concluídas e validadas. O checklist não substitui os critérios de aceite: os itens descrevem o trabalho a realizar, enquanto os critérios comprovam o resultado observável.

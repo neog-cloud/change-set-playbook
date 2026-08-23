@@ -7,7 +7,7 @@ Modelos, prompts e guias para conduzir mudanças de engenharia assistidas por IA
 Uma **Change Set** é uma unidade rastreável de mudança de engenharia: funcionalidade, correção, refatoração, investigação técnica ou alteração documental. Ela pode conter uma ou mais sessões com agentes de IA e um ou mais commits Git.
 
 ```text
-Planejamento → Especificação → Validação da especificação → Implementação
+Descoberta e planejamento → Especificação → Validação da especificação → Implementação
 → Revisão independente → Correções iterativas → Aprovação → Pós-Change Set
 ```
 
@@ -53,7 +53,7 @@ Não crie arquivos ou diretórios com espaços no nome. Use nomes técnicos em m
 ## Uso rápido
 
 1. Copie os modelos de `templates/change-set/` para `docs/change-sets/cs-[ID]/` no projeto-alvo. Use uma pasta própria para cada Sub-Change Set independente.
-2. Preencha planejamento, especificação e o checklist de implementação antes da implementação.
+2. Registre a descoberta e o planejamento em `planning.md`; depois preencha a especificação e o checklist de implementação antes de implementar.
 3. Faça a revisão em uma sessão independente.
 4. Execute o pós-Change Set somente após status `APROVADO`.
 
