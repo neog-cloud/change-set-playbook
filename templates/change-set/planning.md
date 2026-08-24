@@ -1,5 +1,6 @@
 # Descoberta e planejamento de [Change Set / Sub-Change Set]: CS-[ID] — [NOME]
 
+**Nome do arquivo de destino:** `planning-<titulo>.md`, usando um slug em minúsculas e `_` no lugar de espaços.
 **Idioma:** português do Brasil, com linguagem acessível às pessoas envolvidas.
 **Status:** rascunho / em alinhamento / pronto para especificação / arquivado.
 **Responsável pelo registro:** [NOME OU PAPEL].
@@ -53,4 +54,4 @@ Não marque este documento como pronto para especificação enquanto houver uma 
 - **Resumo para a especificação:** [Problema, resultado esperado, decisões e restrições que devem ser traduzidos em escopo técnico.]
 - **Referências:** [Links para pesquisas, chamados, protótipos, decisões ou documentos relacionados.]
 
-Ao iniciar `specification.md`, transforme este planejamento em escopo, contratos, checklist de implementação, critérios de aceite e estratégia de validação. Se parte do trabalho exigir planejamento, implementação e revisão próprios, crie uma Sub-Change Set independente.
+Ao iniciar `specification-<titulo>.md`, transforme este planejamento em escopo, contratos, checklist de implementação, critérios de aceite e estratégia de validação. Se parte do trabalho exigir planejamento, implementação e revisão próprios, crie uma Sub-Change Set independente.

@@ -8,9 +8,10 @@ Preencha os campos abaixo:
 
 ```text
 ID da Change Set: CS-[ID]
-Caminho do planejamento: docs/change-sets/cs-[ID]/planning.md
-Caminho da especificação: docs/change-sets/cs-[ID]/specification.md
-Caminho do relatório: docs/change-sets/cs-[ID]/review-specification-cs-[ID].md
+Título normalizado: [titulo]
+Caminho do planejamento: docs/change-sets/cs-[ID]/planning-[titulo].md
+Caminho da especificação: docs/change-sets/cs-[ID]/specification-[titulo].md
+Caminho do relatório: docs/change-sets/cs-[ID]/review-specification-[titulo].md
 
 Contexto adicional disponível:
 [LINKS, DOCUMENTOS, RESTRIÇÕES OU “NENHUM”]
@@ -20,15 +21,15 @@ Contexto adicional disponível:
 
 Você é um revisor independente responsável por verificar se a especificação de uma Change Set está clara, completa, implementável e suficientemente limitada antes do início da implementação.
 
-Leia primeiro o `README.md`, o `templates/change-set/specification.md`, o `planning.md` e a `specification.md` indicados. Leia também o `AGENTS.md`, o `README.md`, as convenções, a estrutura do projeto e os documentos de contexto do projeto-alvo quando existirem. Inspecione o código e execute apenas verificações não destrutivas necessárias para confirmar caminhos, contratos, padrões e comandos. Não implemente alterações.
+Leia primeiro o `README.md`, o `templates/change-set/specification.md`, o `planning-[titulo].md` e a `specification-[titulo].md` indicados. Leia também o `AGENTS.md`, o `README.md`, as convenções, a estrutura do projeto e os documentos de contexto do projeto-alvo quando existirem. Inspecione o código e execute apenas verificações não destrutivas necessárias para confirmar caminhos, contratos, padrões e comandos. Não implemente alterações.
 
 ### Objetivo da revisão
 
-Crie ou atualize somente o relatório em `docs/change-sets/cs-[ID]/review-specification-cs-[ID].md`. O relatório deve permitir que a pessoa responsável corrija a especificação sem precisar interpretar críticas vagas.
+Crie ou atualize somente o relatório em `docs/change-sets/cs-[ID]/review-specification-[titulo].md`. O `[titulo]` deve ser um slug em minúsculas, sem espaços e com `_` entre as palavras. O relatório deve permitir que a pessoa responsável corrija a especificação sem precisar interpretar críticas vagas.
 
 Avalie, no mínimo:
 
-- fidelidade entre `planning.md` e `specification.md`;
+- fidelidade entre `planning-[titulo].md` e `specification-[titulo].md`;
 - clareza do objetivo, do escopo incluído e do fora de escopo;
 - tratamento de decisões pendentes, riscos e premissas;
 - tamanho da Change Set e decomposição do checklist de implementação;
@@ -41,7 +42,7 @@ Avalie, no mínimo:
 
 ### Regras de auditoria
 
-1. Use o `planning.md` como referência de intenção e contexto, mas trate a `specification.md` como o objeto principal da revisão.
+1. Use o `planning-[titulo].md` como referência de intenção e contexto, mas trate a `specification-[titulo].md` como o objeto principal da revisão.
 2. Não aceite uma especificação apenas porque ela é detalhada. Verifique se cada detalhe é sustentado pelo planejamento, pelo contexto do projeto ou por uma decisão explicitamente registrada.
 3. Diferencie defeito de especificação, dúvida legítima e preferência pessoal. Relate somente problemas que possam causar implementação incorreta, escopo indefinido, risco relevante ou validação insuficiente.
 4. Procure requisitos implícitos ausentes: permissões, isolamento, estados de erro, concorrência, compatibilidade, migração, rollback, observabilidade, acessibilidade e impacto em dados, quando forem pertinentes ao caso.
@@ -50,7 +51,7 @@ Avalie, no mínimo:
 7. Verifique se cada critério de aceite descreve comportamento observável e possui evidência ou teste possível. Sinalize critérios vagos como “funcionar corretamente” ou “melhorar a experiência”.
 8. Verifique se os comandos de validação são reais, seguros e suficientes para o escopo. Não declare comandos como aprovados sem executá-los.
 9. Se houver uma dúvida material sem resposta, classifique-a como bloqueadora e recomende `AJUSTES OBRIGATÓRIOS` ou `REPROVADA`, conforme o impacto.
-10. Não altere `planning.md`, `specification.md`, código, testes, índices ou árvores estruturais. Não crie checklist de implementação alternativo dentro do código.
+10. Não altere `planning-[titulo].md`, `specification-[titulo].md`, código, testes, índices ou árvores estruturais. Não crie checklist de implementação alternativo dentro do código.
 11. Use nomes de arquivos e diretórios sem espaços; quando mencionar um caminho novo, use minúsculas e `_` no lugar de espaços.
 
 ### Status da revisão

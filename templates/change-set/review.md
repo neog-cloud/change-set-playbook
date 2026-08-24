@@ -1,20 +1,21 @@
 # Revisão de [Change Set / Sub-Change Set]: CS-[ID] — [NOME]
 
+**Nome do arquivo de destino:** `review-<titulo>.md`, usando o mesmo slug do `planning-<titulo>.md` e `specification-<titulo>.md`.
 Revise a implementação da Change Set usando a documentação e a base indicadas abaixo. Produza somente o relatório de revisão; **não modifique código, testes ou documentação do projeto**.
 
 **Idioma:** português do Brasil.
 **Base do diff:** `[branch / commit / tag de referência]` → `[HEAD / branch revisada]`.
-**Documentos de entrada:** `[planning.md]`, `[especificação]`, `[resultados de validação]`.
+**Documentos de entrada:** `[planning-<titulo>.md]`, `[specification-<titulo>.md]`, `[resultados de validação]`.
 
 **Convenção de ID:** `CS-001` a `CS-999`; após `CS-999`, use `CS-A01` a `CS-A99`, depois `CS-B01` a `CS-B99`, e assim sucessivamente. Para uma Sub-Change Set independente, use `CS-[ID-PRINCIPAL]-[SUBITEM]`, como `CS-004-05`.
 
-**Convenção de arquivos:** não crie arquivos ou diretórios com espaços. Use nomes técnicos em minúsculas e substitua espaços por `_`; preserve o título legível apenas dentro do documento. O relatório deve ser salvo em `docs/change-sets/cs-[ID]/review-cs-[ID].md` ou, quando o projeto adotar nomes descritivos, em um caminho equivalente sem espaços, como `docs/change-sets/cs-[ID]/relatorio_revisao_cs-[ID].md`.
+**Convenção de arquivos:** não crie arquivos ou diretórios com espaços. Use o padrão `review-<titulo>.md`, com o mesmo slug em minúsculas e separado por `_` usado nos demais artefatos; preserve o título legível apenas dentro do documento.
 
 ## Instruções de auditoria
 
 **Configuração recomendada:** GPT-5.6 Terra / `high`. Use GPT-5.6 Sol / `high` ou `xhigh` para segurança, concorrência, migração, dados financeiros, autenticação ou alteração transversal.
 
-1. Leia o `planning.md`, a especificação, o diff e os resultados de validação antes de concluir.
+1. Leia o `planning-<titulo>.md`, o `specification-<titulo>.md`, o diff e os resultados de validação antes de concluir.
 2. Audite aderência ao escopo, critérios de aceite, testes, regressões, contratos, tratamento de erro, autorização/isolamento, dados e observabilidade quando aplicáveis.
 3. Execute somente verificações não destrutivas autorizadas pela Change Set. Registre comandos e resultados relevantes.
 4. Não presuma que um teste existente prova o critério: verifique o cenário e a qualidade da asserção.
@@ -28,7 +29,7 @@ Revise a implementação da Change Set usando a documentação e a base indicada
 
 ## Estrutura obrigatória do arquivo de saída
 
-Salve em `docs/change-sets/cs-[ID]/review-cs-[ID].md`.
+Salve em `docs/change-sets/cs-[ID]/review-<titulo>.md`.
 
 ```md
 # Relatório de Revisão — Change Set CS-[ID]

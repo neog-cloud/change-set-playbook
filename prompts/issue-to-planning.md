@@ -1,4 +1,4 @@
-# Prompt — Transformar uma issue em `planning.md`
+# Prompt — Transformar uma issue em `planning-<titulo>.md`
 
 Use este prompt quando uma issue criada por uma pessoa usuária precisar ser transformada no documento de descoberta e planejamento de uma Change Set.
 
@@ -8,7 +8,8 @@ Preencha os campos abaixo e mantenha o texto original da issue completo:
 
 ```text
 ID da Change Set: CS-[ID]
-Caminho de saída: docs/change-sets/cs-[ID]/planning.md
+Título normalizado: [titulo]
+Caminho de saída: docs/change-sets/cs-[ID]/planning-[titulo].md
 
 Issue original:
 [COLE A ISSUE COMPLETA AQUI]
@@ -25,7 +26,7 @@ Leia primeiro o `README.md`, o `templates/change-set/planning.md` e, se existire
 
 ### Objetivo
 
-Crie ou atualize somente o arquivo `docs/change-sets/cs-[ID]/planning.md`, usando o modelo de planejamento. Escreva em português do Brasil e use linguagem acessível a pessoas usuárias, negócio, suporte, produto, UX e engenharia.
+Crie ou atualize somente o arquivo `docs/change-sets/cs-[ID]/planning-[titulo].md`, usando o modelo de planejamento. O `[titulo]` deve ser um slug em minúsculas, sem espaços e com `_` entre as palavras. Escreva em português do Brasil e use linguagem acessível a pessoas usuárias, negócio, suporte, produto, UX e engenharia.
 
 O documento deve transformar a intenção da issue em um entendimento compartilhado do problema, sem antecipar a especificação técnica. Preserve a intenção e os fatos da issue, mas organize o conteúdo nas seções do modelo:
 
@@ -44,13 +45,13 @@ O documento deve transformar a intenção da issue em um entendimento compartilh
 4. Converta pedidos vagos em perguntas de alinhamento; não responda às perguntas por conta própria.
 5. Registre a origem das contribuições quando a issue indicar pessoa, área, comentário ou papel.
 6. Mantenha fora de escopo tudo que a issue explicitamente excluir. Se não houver exclusões, registre somente limites que possam ser inferidos com segurança e marque o restante como dúvida.
-7. Não transforme o planning em `specification.md`: não defina endpoints, schema, arquivos de implementação, arquitetura, bibliotecas, comandos de teste ou checklist de implementação, salvo quando a issue trouxer uma decisão já existente. Nesse caso, registre-a como decisão ou restrição, sem expandi-la.
+7. Não transforme o planning em `specification-[titulo].md`: não defina endpoints, schema, arquivos de implementação, arquitetura, bibliotecas, comandos de teste ou checklist de implementação, salvo quando a issue trouxer uma decisão já existente. Nesse caso, registre-a como decisão ou restrição, sem expandi-la.
 8. Não implemente nada, não crie testes, não faça commit e não atualize índice, árvore estrutural ou outros documentos.
 9. Use nomes de arquivos e diretórios sem espaços; quando precisar sugerir um caminho, use minúsculas e `_` no lugar de espaços.
 
 ### Critério de conclusão
 
-O trabalho está concluído quando `planning.md`:
+O trabalho está concluído quando `planning-[titulo].md`:
 
 - representa fielmente a issue;
 - pode ser lido por pessoas técnicas e não técnicas;

@@ -1,5 +1,6 @@
 # Especificação de [Change Set / Sub-Change Set]: CS-[ID] — [NOME]
 
+**Nome do arquivo de destino:** `specification-<titulo>.md`, usando o mesmo slug do `planning-<titulo>.md`.
 **Idioma:** português do Brasil.
 **Status:** rascunho / validada / em implementação / concluída.
 **Base técnica:** branch `[NOME]`, commit `[SHA]` ou tag `[REF]`.
@@ -45,7 +46,7 @@ Mantenha os itens desmarcados até a alteração correspondente estar implementa
 - **Stack e versões relevantes:** [Ex.: Go 1.xx, React, PostgreSQL, SQLC.]
 - **Arquitetura e convenções:** [Padrões obrigatórios do projeto.]
 - **Dependências permitidas / proibidas:** [Liste ou escreva “nenhuma nova dependência”.]
-- **Referências de contexto:** [Links ou caminhos para `planning.md`, decisões e trechos relevantes de `docs/change-sets/index.md` e `source-tree.md`.]
+- **Referências de contexto:** [Links ou caminhos para `planning-<titulo>.md`, decisões e trechos relevantes de `docs/change-sets/index.md` e `source-tree.md`.]
 
 ## 5. Mapa inicial de contexto
 
@@ -79,7 +80,7 @@ Inclua critérios de sucesso, falha, regressão e caso de borda aplicáveis. Pre
 
 **Configuração recomendada:** GPT-5.6 Terra / `medium`. Use Terra / `high` se a tarefa exigir investigação adicional. Reserve Sol para mudança de alto risco, arquitetura, segurança, migração ou impacto transversal.
 
-1. Leia esta especificação, o `planning.md` associado e os arquivos do mapa inicial.
+1. Leia esta especificação, o `planning-<titulo>.md` associado e os arquivos do mapa inicial.
 2. Confirme decisões pendentes antes de implementar; não invente requisito material ausente.
 3. Use o checklist da seção 3 como roteiro; atualize cada item somente após implementar e validar a alteração correspondente.
 4. Crie ou ajuste primeiro os testes definidos na seção 7 quando a tarefa permitir TDD.

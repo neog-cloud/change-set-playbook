@@ -1,5 +1,6 @@
 # Procedimento pós-[Change Set / Sub-Change Set]: CS-[ID] — [NOME]
 
+**Nome do arquivo de destino:** `post-change-set-<titulo>.md`, usando o mesmo slug dos demais artefatos.
 Execute este procedimento somente após a última revisão da Change Set receber status **APROVADO**.
 
 **Convenção de ID:** `CS-001` a `CS-999`; após `CS-999`, use `CS-A01` a `CS-A99`, depois `CS-B01` a `CS-B99`, e assim sucessivamente. Para uma Sub-Change Set independente, use `CS-[ID-PRINCIPAL]-[SUBITEM]`, como `CS-004-05`.

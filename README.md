@@ -48,12 +48,12 @@ examples/               Exemplos fictícios completos
 
 ## Convenção de nomes de arquivos
 
-Não crie arquivos ou diretórios com espaços no nome. Use nomes técnicos em minúsculas e substitua cada espaço por sublinhado (`_`), por exemplo, `relatorio_revisao_cs-001.md`. Essa regra vale também para arquivos copiados dos modelos; títulos legíveis devem ficar dentro do conteúdo do arquivo, não no nome do caminho.
+Não crie arquivos ou diretórios com espaços no nome. Para os artefatos de uma Change Set, use o padrão `planning-<titulo>.md`, `specification-<titulo>.md`, `review-<titulo>.md` e `post-change-set-<titulo>.md`. O `<titulo>` deve ser um slug em minúsculas, com palavras separadas por `_`, como `aviso_manutencao_programada`. Essa regra vale também para arquivos copiados dos modelos; títulos legíveis devem ficar dentro do conteúdo do arquivo, não no nome do caminho.
 
 ## Uso rápido
 
 1. Copie os modelos de `templates/change-set/` para `docs/change-sets/cs-[ID]/` no projeto-alvo. Use uma pasta própria para cada Sub-Change Set independente.
-2. Registre a descoberta e o planejamento em `planning.md`; depois preencha a especificação e o checklist de implementação antes de implementar.
+2. Registre a descoberta e o planejamento em `planning-<titulo>.md`; depois preencha `specification-<titulo>.md` e o checklist de implementação antes de implementar.
 3. Faça a revisão em uma sessão independente.
 4. Execute o pós-Change Set somente após status `APROVADO`.
 

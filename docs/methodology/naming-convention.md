@@ -29,15 +29,15 @@ Não reutilize o sufixo dentro do mesmo item principal. Um identificador com mai
 docs/change-sets/
 ├── index.md
 ├── cs-001/
-    ├── planning.md
-    ├── specification.md
-    └── review-cs-001.md
+    ├── planning-aviso_manutencao_programada.md
+    ├── specification-aviso_manutencao_programada.md
+    └── review-aviso_manutencao_programada.md
 └── cs-004-05/
-    ├── planning.md
-    ├── specification.md
-    └── review-cs-004-05.md
+    ├── planning-importacao_clientes.md
+    ├── specification-importacao_clientes.md
+    └── review-importacao_clientes.md
 ```
 
-Nomes de arquivos e diretórios não podem conter espaços. Use nomes técnicos em minúsculas e substitua espaços por `_`, como em `relatorio_revisao_cs-001.md`. Não transforme títulos visíveis, como `Change Set CS-001`, em nomes de arquivo.
+Nomes de arquivos e diretórios não podem conter espaços. Os artefatos de uma Change Set usam `planning-<titulo>.md`, `specification-<titulo>.md`, `review-<titulo>.md` e `post-change-set-<titulo>.md`. Substitua `<titulo>` por um slug em minúsculas e use `_` entre as palavras, como em `specification-aviso_manutencao_programada.md`. Um relatório intermediário da revisão da especificação pode usar `review-specification-<titulo>.md`. Não transforme títulos visíveis, como `Change Set CS-001`, em nomes de arquivo.
 
 Nomes de diretório usam minúsculas. Nomes visíveis usam `Change Set CS-001` ou `Sub-Change Set CS-004-05`.

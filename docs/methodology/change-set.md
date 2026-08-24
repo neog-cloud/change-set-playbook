@@ -12,9 +12,9 @@ O objetivo é que cada mudança tenha contexto, critérios verificáveis, implem
 
 ## Descoberta e planejamento
 
-Antes da especificação, registre o contexto em `planning.md`. Esse documento consolida o problema, o valor esperado, o caso de uso, contribuições de áreas distintas, decisões, dúvidas e riscos em linguagem acessível para pessoas técnicas e não técnicas.
+Antes da especificação, registre o contexto em `planning-<titulo>.md`. Esse documento consolida o problema, o valor esperado, o caso de uso, contribuições de áreas distintas, decisões, dúvidas e riscos em linguagem acessível para pessoas técnicas e não técnicas.
 
-O planejamento orienta a especificação, mas não substitui seus elementos técnicos nem autoriza a implementação. A especificação deve traduzir os alinhamentos relevantes em escopo, contratos, checklist de implementação, critérios de aceite e validações.
+O planejamento orienta a especificação, mas não substitui seus elementos técnicos nem autoriza a implementação. A especificação deve ser salva como `specification-<titulo>.md` e traduzir os alinhamentos relevantes em escopo, contratos, checklist de implementação, critérios de aceite e validações. A revisão final deve ser salva como `review-<titulo>.md`.
 
 ## Checklist de implementação
 

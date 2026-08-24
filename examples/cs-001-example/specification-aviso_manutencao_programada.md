@@ -40,7 +40,7 @@
 - **Stack e versões relevantes:** aplicação web existente.
 - **Arquitetura e convenções:** reutilizar os componentes e estilos da página inicial.
 - **Dependências permitidas / proibidas:** nenhuma nova dependência.
-- **Referências de contexto:** [planning.md](planning.md).
+- **Referências de contexto:** [planning-aviso_manutencao_programada.md](planning-aviso_manutencao_programada.md).
 
 ## 5. Mapa inicial de contexto
 

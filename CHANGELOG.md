@@ -11,13 +11,14 @@ Todas as mudanças relevantes deste repositório serão registradas neste arquiv
 - Prompt de migração de “Sprint” para “Change Set”.
 - Guia de roteamento GPT-5.6 Luna, Terra e Sol.
 - Checklist de implementação na especificação, para decompor e acompanhar o trabalho da Change Set.
-- Modelo `planning.md` para descoberta e alinhamento multidisciplinar antes da especificação.
+- Modelo `planning-<titulo>.md` para descoberta e alinhamento multidisciplinar antes da especificação.
 - Exemplo fictício completo de planejamento, especificação e revisão para `CS-001`.
-- Prompt para transformar issues em `planning.md`.
-- Prompt para transformar `planning.md` em `specification.md`.
-- Prompt para revisar `specification.md` antes da implementação.
+- Prompt para transformar issues em `planning-<titulo>.md`.
+- Prompt para transformar `planning-<titulo>.md` em `specification-<titulo>.md`.
+- Prompt para revisar `specification-<titulo>.md` antes da implementação.
 
 ### Changed
 
 - Orientação para não usar espaços em nomes de arquivos e diretórios, substituindo-os por `_`.
 - Instruções para agentes e contribuidores alinhadas ao fluxo de planejamento, especificação e revisão.
+- Convenção de nomes dos artefatos com título normalizado: `planning-<titulo>.md`, `specification-<titulo>.md` e `review-<titulo>.md`.

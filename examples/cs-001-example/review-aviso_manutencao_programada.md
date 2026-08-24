@@ -1,7 +1,7 @@
 # Relatório de Revisão — Change Set CS-001
 
 **Status:** APROVADO.
-**Documentos de entrada:** [planning.md](planning.md) e [specification.md](specification.md).
+**Documentos de entrada:** [planning-aviso_manutencao_programada.md](planning-aviso_manutencao_programada.md) e [specification-aviso_manutencao_programada.md](specification-aviso_manutencao_programada.md).
 **Base auditada:** implementação fictícia do aviso de manutenção programada.
 
 ## Resumo executivo

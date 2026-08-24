@@ -13,7 +13,7 @@
 1. Explique o problema que a alteração resolve.
 2. Prefira instruções curtas, observáveis e sem contradições.
 3. Preserve a compatibilidade de caminhos e placeholders quando possível.
-4. Preserve a relação entre `planning.md`, `specification.md` e `review-cs-[ID].md` quando ela for aplicável.
+4. Preserve a relação entre `planning-<titulo>.md`, `specification-<titulo>.md` e `review-<titulo>.md` quando ela for aplicável.
 5. Teste os links Markdown e confira o diff antes de propor a alteração.
 
 ## Idioma
