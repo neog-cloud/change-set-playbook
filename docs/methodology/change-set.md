@@ -14,11 +14,13 @@ O objetivo é que cada mudança tenha contexto, critérios verificáveis, implem
 
 Antes da especificação, registre o contexto em `planning-<titulo>.md`. Esse documento consolida o problema, o valor esperado, o caso de uso, contribuições de áreas distintas, decisões, dúvidas e riscos em linguagem acessível para pessoas técnicas e não técnicas.
 
-O planejamento orienta a especificação, mas não substitui seus elementos técnicos nem autoriza a implementação. A especificação deve ser salva como `specification-<titulo>.md` e traduzir os alinhamentos relevantes em escopo, contratos, checklist de implementação, critérios de aceite e validações. A revisão final deve ser salva como `review-<titulo>.md`.
+O planejamento orienta a especificação, mas não substitui seus elementos técnicos nem autoriza a implementação. A especificação deve ser salva como `specification-<titulo>.md` e traduzir os alinhamentos relevantes em escopo, contratos, requisitos `RQ-*`, checklist, critérios de aceite, matriz de rastreabilidade e validações `VT-*`.
+
+Antes de implementar, uma sessão independente deve produzir `review-specification-<titulo>.md`. Somente o status `APROVADA` nesse relatório permite que a especificação passe a `validada`. Durante a implementação, a pessoa responsável registra a evidência obtida e o resultado de cada validação na especificação; a revisão final em `review-<titulo>.md` confere essa cadeia, o diff e os testes.
 
 ## Checklist de implementação
 
-A especificação deve manter um checklist de unidades de trabalho pequenas e concretas. Ele serve como roteiro de implementação e permite acompanhar quais partes do escopo já foram concluídas e validadas. O checklist não substitui os critérios de aceite: os itens descrevem o trabalho a realizar, enquanto os critérios comprovam o resultado observável.
+A especificação deve manter um checklist de unidades de trabalho pequenas e concretas. Ele serve como roteiro de implementação e permite acompanhar quais partes do escopo já foram concluídas e validadas. O checklist não substitui os critérios de aceite: os itens descrevem o trabalho a realizar, enquanto os critérios comprovam o resultado observável. A matriz deve ligar cada requisito ao respectivo checklist, critérios de aceite, validação e evidência obtida. Uma ligação ausente bloqueia a implementação ou a aprovação, conforme a fase.
 
 Quando um item do checklist exigir planejamento, implementação e revisão próprios, ele deve se tornar uma Sub-Change Set. Itens sem ciclo próprio permanecem na especificação da Change Set principal.
 

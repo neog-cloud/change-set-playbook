@@ -1,7 +1,7 @@
 # Relatório de Revisão — Change Set CS-001
 
 **Status:** APROVADO.
-**Documentos de entrada:** [planning-aviso_manutencao_programada.md](planning-aviso_manutencao_programada.md) e [specification-aviso_manutencao_programada.md](specification-aviso_manutencao_programada.md).
+**Documentos de entrada:** [planning-aviso_manutencao_programada.md](planning-aviso_manutencao_programada.md), [specification-aviso_manutencao_programada.md](specification-aviso_manutencao_programada.md) e [review-specification-aviso_manutencao_programada.md](review-specification-aviso_manutencao_programada.md).
 **Base auditada:** implementação fictícia do aviso de manutenção programada.
 
 ## Resumo executivo
@@ -9,6 +9,17 @@
 - Aderência ao escopo: atendida.
 - Arquivos auditados: `web/src/pages/home.tsx` e `web/src/styles/home.css` (caminhos fictícios).
 - Validações executadas: conferência visual em tela larga e móvel — aprovada.
+
+## Cobertura por requisito
+
+| Requisito | Checklist | Critérios de aceite | Evidência conferida | Conclusão |
+|---|---|---|---|---|
+| RQ-01 | CI-01, CI-03 | CA-01 | VT-01 — passou | atendido |
+| RQ-02 | CI-02, CI-03 | CA-02 | VT-02 — passou | atendido |
+
+## Acompanhamento de achados anteriores
+
+Nenhum.
 
 ## Checklist de correção
 

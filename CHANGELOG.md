@@ -16,9 +16,13 @@ Todas as mudanças relevantes deste repositório serão registradas neste arquiv
 - Prompt para transformar issues em `planning-<titulo>.md`.
 - Prompt para transformar `planning-<titulo>.md` em `specification-<titulo>.md`.
 - Prompt para revisar `specification-<titulo>.md` antes da implementação.
+- Modelo `review-specification-<titulo>.md` para registrar e decidir o gate independente antes da implementação.
+- Matriz de rastreabilidade obrigatória entre requisitos (`RQ-*`), checklist (`CI-*`), critérios de aceite (`CA-*`), validações (`VT-*`) e evidências.
+- Guia operacional de issue até Change Set concluída.
 
 ### Changed
 
 - Orientação para não usar espaços em nomes de arquivos e diretórios, substituindo-os por `_`.
 - Instruções para agentes e contribuidores alinhadas ao fluxo de planejamento, especificação e revisão.
 - Convenção de nomes dos artefatos com título normalizado: `planning-<titulo>.md`, `specification-<titulo>.md` e `review-<titulo>.md`.
+- Status e gate da especificação: somente uma revisão pré-implementação `APROVADA` autoriza o status `validada`.

@@ -5,7 +5,7 @@ Revise a implementação da Change Set usando a documentação e a base indicada
 
 **Idioma:** português do Brasil.
 **Base do diff:** `[branch / commit / tag de referência]` → `[HEAD / branch revisada]`.
-**Documentos de entrada:** `[planning-<titulo>.md]`, `[specification-<titulo>.md]`, `[resultados de validação]`.
+**Documentos de entrada:** `[planning-<titulo>.md]`, `[specification-<titulo>.md]`, `[review-specification-<titulo>.md]`, `[registro de execução e resultados de validação]`, `[revisão final anterior, se existir]`.
 
 **Convenção de ID:** `CS-001` a `CS-999`; após `CS-999`, use `CS-A01` a `CS-A99`, depois `CS-B01` a `CS-B99`, e assim sucessivamente. Para uma Sub-Change Set independente, use `CS-[ID-PRINCIPAL]-[SUBITEM]`, como `CS-004-05`.
 
@@ -15,11 +15,12 @@ Revise a implementação da Change Set usando a documentação e a base indicada
 
 **Configuração recomendada:** GPT-5.6 Terra / `high`. Use GPT-5.6 Sol / `high` ou `xhigh` para segurança, concorrência, migração, dados financeiros, autenticação ou alteração transversal.
 
-1. Leia o `planning-<titulo>.md`, o `specification-<titulo>.md`, o diff e os resultados de validação antes de concluir.
-2. Audite aderência ao escopo, critérios de aceite, testes, regressões, contratos, tratamento de erro, autorização/isolamento, dados e observabilidade quando aplicáveis.
+1. Leia o `planning-<titulo>.md`, o `specification-<titulo>.md`, o `review-specification-<titulo>.md`, o diff, os resultados de validação e a revisão final anterior, se existir, antes de concluir.
+2. Audite aderência ao escopo, matriz de rastreabilidade, critérios de aceite, testes, regressões, contratos, tratamento de erro, autorização/isolamento, dados e observabilidade quando aplicáveis.
 3. Execute somente verificações não destrutivas autorizadas pela Change Set. Registre comandos e resultados relevantes.
 4. Não presuma que um teste existente prova o critério: verifique o cenário e a qualidade da asserção.
-5. Não reporte preferências pessoais como defeitos. Priorize impacto funcional, risco e divergência da especificação.
+5. Para cada `RQ-*`, confira o `CI-*`, `CA-*`, `VT-*` e a evidência obtida correspondentes. Uma linha incompleta ou uma evidência que não prova o cenário é um achado.
+6. Não reporte preferências pessoais como defeitos. Priorize impacto funcional, risco e divergência da especificação.
 
 ## Status
 
@@ -42,11 +43,25 @@ Salve em `docs/change-sets/cs-[ID]/review-<titulo>.md`.
 - Arquivos auditados: [lista]
 - Validações executadas: [comando — resultado]
 
+## Cobertura por requisito
+
+| Requisito | Checklist | Critérios de aceite | Evidência conferida | Conclusão |
+|---|---|---|---|---|
+| RQ-01 | CI-01 | CA-01 | VT-01 — [resultado] | atendido / achado |
+
+## Acompanhamento de achados anteriores
+
+<!-- Na primeira revisão, escreva “Nenhum”. Em revisões posteriores, registre cada ID anterior. -->
+
+| Achado | Situação | Evidência do reteste |
+|---|---|---|
+| REV-01 | corrigido / permanece aberto | [diff, teste ou cenário] |
+
 ## Checklist de correção
 
 <!-- Se não houver achados, escreva “Nenhum”. -->
 
-### [CRÍTICO / ALTO / MÉDIO / BAIXO] — [título objetivo]
+### REV-01 — [CRÍTICO / ALTO / MÉDIO / BAIXO] — [título objetivo]
 
 - Arquivo e linha: `[caminho:linha]`
 - Correção requerida: [instrução imperativa, pronta para a sessão de implementação]
@@ -64,4 +79,4 @@ Salve em `docs/change-sets/cs-[ID]/review-<titulo>.md`.
 - [Item] ou “Nenhum”.
 ```
 
-Um relatório com `AJUSTES OBRIGATÓRIOS` ou `REPROVADO` retorna à sessão de implementação. A revisão posterior deve conferir cada item do checklist e também regressões causadas pelas correções. O procedimento pós-Change Set só começa após `APROVADO`.
+Um relatório com `AJUSTES OBRIGATÓRIOS` ou `REPROVADO` retorna à sessão de implementação. A revisão posterior deve conferir cada `REV-*`, preservá-lo na tabela de acompanhamento com o resultado do reteste, conferir a matriz de rastreabilidade e procurar regressões causadas pelas correções. O procedimento pós-Change Set só começa após `APROVADO`.

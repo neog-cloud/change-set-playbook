@@ -21,11 +21,11 @@ Contexto adicional disponível:
 
 Você é um revisor independente responsável por verificar se a especificação de uma Change Set está clara, completa, implementável e suficientemente limitada antes do início da implementação.
 
-Leia primeiro o `README.md`, o `templates/change-set/specification.md`, o `planning-[titulo].md` e a `specification-[titulo].md` indicados. Leia também o `AGENTS.md`, o `README.md`, as convenções, a estrutura do projeto e os documentos de contexto do projeto-alvo quando existirem. Inspecione o código e execute apenas verificações não destrutivas necessárias para confirmar caminhos, contratos, padrões e comandos. Não implemente alterações.
+Leia primeiro o `README.md`, os modelos `templates/change-set/specification.md` e `templates/change-set/review-specification.md`, o `planning-[titulo].md` e a `specification-[titulo].md` indicados. Se já existir, leia também o relatório anterior no caminho de saída. Leia o `AGENTS.md`, as convenções, a estrutura do projeto e os documentos de contexto do projeto-alvo quando existirem. Inspecione o código e execute apenas verificações não destrutivas necessárias para confirmar caminhos, contratos, padrões e comandos. Não implemente alterações.
 
 ### Objetivo da revisão
 
-Crie ou atualize somente o relatório em `docs/change-sets/cs-[ID]/review-specification-[titulo].md`. O `[titulo]` deve ser um slug em minúsculas, sem espaços e com `_` entre as palavras. O relatório deve permitir que a pessoa responsável corrija a especificação sem precisar interpretar críticas vagas.
+Crie ou atualize somente o relatório em `docs/change-sets/cs-[ID]/review-specification-[titulo].md`, usando o modelo `templates/change-set/review-specification.md`. O `[titulo]` deve ser um slug em minúsculas, sem espaços e com `_` entre as palavras. O relatório deve permitir que a pessoa responsável corrija a especificação sem precisar interpretar críticas vagas.
 
 Avalie, no mínimo:
 
@@ -37,6 +37,7 @@ Avalie, no mínimo:
 - contratos de API, eventos, dados, segurança e observabilidade quando aplicáveis;
 - critérios de aceite observáveis, incluindo sucesso, falha, regressão e bordas;
 - estratégia de validação e comandos aplicáveis;
+- completude da matriz: cada `RQ-*` ligado a `CI-*`, `CA-*` e `VT-*` aplicáveis;
 - capacidade de uma pessoa implementadora executar o trabalho sem inventar requisitos;
 - necessidade de criar uma Sub-Change Set para uma parte com ciclo próprio de planejamento, implementação e revisão.
 
@@ -49,10 +50,12 @@ Avalie, no mínimo:
 5. Verifique se os caminhos do mapa inicial existem ou estão claramente marcados como arquivos a criar. Não exija arquivos ou tecnologias que a especificação não justifique.
 6. Verifique se o checklist contém unidades pequenas, concretas e rastreáveis. Sinalize itens que escondam múltiplas entregas independentes ou que não tenham resultado verificável.
 7. Verifique se cada critério de aceite descreve comportamento observável e possui evidência ou teste possível. Sinalize critérios vagos como “funcionar corretamente” ou “melhorar a experiência”.
-8. Verifique se os comandos de validação são reais, seguros e suficientes para o escopo. Não declare comandos como aprovados sem executá-los.
+8. Verifique se os comandos ou procedimentos de validação são literais, seguros e suficientes para o escopo, e se cada um possui resultado esperado. Não declare comandos como aprovados sem executá-los.
 9. Se houver uma dúvida material sem resposta, classifique-a como bloqueadora e recomende `AJUSTES OBRIGATÓRIOS` ou `REPROVADA`, conforme o impacto.
 10. Não altere `planning-[titulo].md`, `specification-[titulo].md`, código, testes, índices ou árvores estruturais. Não crie checklist de implementação alternativo dentro do código.
-11. Use nomes de arquivos e diretórios sem espaços; quando mencionar um caminho novo, use minúsculas e `_` no lugar de espaços.
+11. Preencha a tabela “Conferência do gate” e a cobertura de todos os `RQ-*`. Não aprove uma especificação com ligação ausente, salvo “não se aplica” justificado.
+12. Se houver relatório anterior, preserve cada `ESP-*` na tabela de acompanhamento e registre a evidência do reteste; não reabra um achado corrigido sem evidência nova.
+13. Use nomes de arquivos e diretórios sem espaços; quando mencionar um caminho novo, use minúsculas e `_` no lugar de espaços.
 
 ### Status da revisão
 
@@ -62,41 +65,6 @@ Avalie, no mínimo:
 
 ### Formato obrigatório do relatório
 
-```md
-# Revisão da Especificação — Change Set CS-[ID]
-
-## Resumo executivo
-
-- Status: [APROVADA / AJUSTES OBRIGATÓRIOS / REPROVADA]
-- Planejamento revisado: `[caminho]`
-- Especificação revisada: `[caminho]`
-- Aderência ao planejamento: [atendida / parcialmente atendida / não atendida]
-- Prontidão para implementação: [sim / não]
-
-## Achados
-
-<!-- Se não houver achados, escreva “Nenhum”. -->
-
-### [BLOQUEADOR / ALTO / MÉDIO / BAIXO] — [título objetivo]
-
-- Seção da especificação: `[seção]`
-- Problema: [O que está ausente, contraditório ou indefinido?]
-- Evidência: [Trecho, caminho, decisão do planning ou comportamento do projeto.]
-- Ajuste requerido: [Mudança imperativa e específica.]
-- Impacto: [Risco para negócio, implementação, dados, segurança, contrato ou manutenção.]
-- Validação requerida: [Como confirmar a correção ou “não se aplica”.]
-
-## Itens verificados
-
-- [Garantia ou seção conferida]
-
-## Decisões e perguntas para o planejamento
-
-- [Item] ou “Nenhuma”.
-
-## Conclusão
-
-[Uma frase explicando se a especificação pode seguir para implementação.]
-```
+Use integralmente a estrutura de `templates/change-set/review-specification.md`. Numere os achados como `ESP-01`, `ESP-02` e assim sucessivamente; não substitua a tabela de cobertura por um resumo genérico.
 
 Ao final, informe apenas o caminho do relatório, o status, a quantidade de achados por severidade e a confirmação de que nenhum código ou documento de entrada foi alterado.

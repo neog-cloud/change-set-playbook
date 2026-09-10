@@ -35,10 +35,12 @@ Sub-Change Sets que tiveram implementação e revisão próprias usam o ID do it
 
 Consulte o [guia de roteamento](docs/model-routing/gpt-5.6-luna-terra-sol.md) para detalhes.
 
+Para o uso diário a partir de uma issue, consulte o [roteiro de issue a Change Set](docs/guides/workflow-issue-to-change-set.md).
+
 ## Estrutura
 
 ```text
-templates/change-set/   Modelos de especificação, revisão e pós-Change Set
+templates/change-set/   Modelos de planejamento, especificação, gates, revisão e pós-Change Set
 prompts/                Prompts reutilizáveis para tarefas operacionais
 docs/methodology/       Método e convenções
 docs/model-routing/     Uso dos modelos GPT-5.6
@@ -48,14 +50,15 @@ examples/               Exemplos fictícios completos
 
 ## Convenção de nomes de arquivos
 
-Não crie arquivos ou diretórios com espaços no nome. Para os artefatos de uma Change Set, use o padrão `planning-<titulo>.md`, `specification-<titulo>.md`, `review-<titulo>.md` e `post-change-set-<titulo>.md`. O `<titulo>` deve ser um slug em minúsculas, com palavras separadas por `_`, como `aviso_manutencao_programada`. Essa regra vale também para arquivos copiados dos modelos; títulos legíveis devem ficar dentro do conteúdo do arquivo, não no nome do caminho.
+Não crie arquivos ou diretórios com espaços no nome. Para os artefatos de uma Change Set, use o padrão `planning-<titulo>.md`, `specification-<titulo>.md`, `review-specification-<titulo>.md`, `review-<titulo>.md` e `post-change-set-<titulo>.md`. O `<titulo>` deve ser um slug em minúsculas, com palavras separadas por `_`, como `aviso_manutencao_programada`. Essa regra vale também para arquivos copiados dos modelos; títulos legíveis devem ficar dentro do conteúdo do arquivo, não no nome do caminho.
 
 ## Uso rápido
 
 1. Copie os modelos de `templates/change-set/` para `docs/change-sets/cs-[ID]/` no projeto-alvo. Use uma pasta própria para cada Sub-Change Set independente.
-2. Registre a descoberta e o planejamento em `planning-<titulo>.md`; depois preencha `specification-<titulo>.md` e o checklist de implementação antes de implementar.
-3. Faça a revisão em uma sessão independente.
-4. Execute o pós-Change Set somente após status `APROVADO`.
+2. Registre a descoberta e o planejamento em `planning-<titulo>.md`; depois preencha `specification-<titulo>.md`, incluindo requisitos `RQ-*`, matriz de rastreabilidade e validações `VT-*`.
+3. Faça a revisão pré-implementação independente em `review-specification-<titulo>.md`. Só uma revisão `APROVADA` permite marcar a especificação como `validada` e iniciar a implementação.
+4. Durante a implementação, registre evidências e resultados na matriz; então faça a revisão final em uma sessão independente.
+5. Execute o pós-Change Set somente após status `APROVADO`.
 
 O prompt para migrar documentação legada de “Sprint” para “Change Set” está em [prompts/migration-sprint-to-change-set.md](prompts/migration-sprint-to-change-set.md).
 
