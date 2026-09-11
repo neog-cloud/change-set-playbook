@@ -1,8 +1,5 @@
-# Prompts reutilizáveis
+# Prompt operacional
 
-Cada prompt deve declarar objetivo, escopo autorizado, limites, critérios de conclusão e formato de entrega.
+Use [implement-issue.md](implement-issue.md) para desenvolver uma feature, correção ou refatoração a partir de uma issue.
 
-- [Migração de Sprint para Change Set](migration-sprint-to-change-set.md): renomeia exclusivamente a documentação de um projeto legado, preservando conteúdo histórico e links internos.
-- [Issue para `planning-<titulo>.md`](issue-to-planning.md): transforma uma issue em um documento de descoberta e planejamento, sem antecipar a especificação ou a implementação.
-- [`planning-<titulo>.md` para `specification-<titulo>.md`](planning-to-specification.md): traduz o planejamento em escopo técnico, checklist, critérios de aceite e validações, sem implementar a mudança.
-- [Revisar `specification-<titulo>.md`](review-specification.md): audita a especificação antes da implementação e produz um relatório independente de prontidão.
+O prompt mantém investigação, plano, implementação, testes e documentação na mesma sessão. Não exige planning, specification ou review separados.

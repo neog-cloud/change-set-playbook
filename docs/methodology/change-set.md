@@ -1,31 +1,36 @@
 # Change Set
 
-Uma Change Set é a unidade de trabalho deste playbook. Ela não é uma Sprint Scrum e não pressupõe duração fixa, cerimônias Scrum ou uma única sessão de IA.
+Uma Change Set é uma mudança de engenharia rastreada pela issue que a originou. Ela pode conter uma feature, correção, refatoração ou alteração documental e pode resultar em um ou mais commits.
 
-Uma Change Set separa três conceitos:
+## Fluxo
 
-- **Change Set:** unidade rastreável de mudança de engenharia.
-- **Sessão:** uma interação com um agente ou modelo.
-- **Commit:** registro de uma alteração no Git.
+```text
+Issue → investigar → planejar → implementar → validar → documentar → revisar no PR
+```
 
-O objetivo é que cada mudança tenha contexto, critérios verificáveis, implementação controlada, revisão independente e registro final confiável.
+Investigação, plano, implementação e validação devem permanecer na mesma sessão sempre que possível. Isso reduz perda de contexto e permite que o plano seja corrigido quando o código real revelar uma premissa incorreta.
 
-## Descoberta e planejamento
+## Fonte de verdade por assunto
 
-Antes da especificação, registre o contexto em `planning-<titulo>.md`. Esse documento consolida o problema, o valor esperado, o caso de uso, contribuições de áreas distintas, decisões, dúvidas e riscos em linguagem acessível para pessoas técnicas e não técnicas.
+| Informação | Fonte de verdade |
+|---|---|
+| Intenção da mudança | Issue |
+| Estado atual do sistema | Código e testes |
+| Comportamento funcional atual | `docs/features/` |
+| Alterações realizadas e validações | Pull request |
+| Histórico técnico | Git |
 
-O planejamento orienta a especificação, mas não substitui seus elementos técnicos nem autoriza a implementação. A especificação deve ser salva como `specification-<titulo>.md` e traduzir os alinhamentos relevantes em escopo, contratos, requisitos `RQ-*`, checklist, critérios de aceite, matriz de rastreabilidade e validações `VT-*`.
+## Quando interromper
 
-Antes de implementar, uma sessão independente deve produzir `review-specification-<titulo>.md`. Somente o status `APROVADA` nesse relatório permite que a especificação passe a `validada`. Durante a implementação, a pessoa responsável registra a evidência obtida e o resultado de cada validação na especificação; a revisão final em `review-<titulo>.md` confere essa cadeia, o diff e os testes.
+O agente deve pedir direção antes de continuar somente quando houver:
 
-## Checklist de implementação
+- resultado esperado materialmente ambíguo;
+- decisão de produto ou negócio ausente;
+- risco relevante para dados, segurança, dinheiro ou contrato externo;
+- ação irreversível sem autorização.
 
-A especificação deve manter um checklist de unidades de trabalho pequenas e concretas. Ele serve como roteiro de implementação e permite acompanhar quais partes do escopo já foram concluídas e validadas. O checklist não substitui os critérios de aceite: os itens descrevem o trabalho a realizar, enquanto os critérios comprovam o resultado observável. A matriz deve ligar cada requisito ao respectivo checklist, critérios de aceite, validação e evidência obtida. Uma ligação ausente bloqueia a implementação ou a aprovação, conforme a fase.
+Uma decisão técnica rotineira deve ser resolvida a partir das convenções, do código e dos testes existentes.
 
-Quando um item do checklist exigir planejamento, implementação e revisão próprios, ele deve se tornar uma Sub-Change Set. Itens sem ciclo próprio permanecem na especificação da Change Set principal.
+## Revisão
 
-## Sub-Change Sets
-
-Quando uma subdivisão de uma Change Set teve planejamento, implementação e revisão próprios, ela é uma **Sub-Change Set**. Ela recebe o ID do item principal seguido de um sufixo de dois dígitos: `CS-004-05` e `CS-004-06` são Sub-Change Sets de `CS-004`.
-
-Uma subtarefa sem ciclo próprio de implementação e revisão não recebe um ID de Sub-Change Set; ela permanece como item do planejamento ou da especificação do item principal.
+A revisão usa a issue, o diff, os resultados das validações e a documentação funcional atualizada. Achados são registrados no pull request; não há relatório de revisão separado.

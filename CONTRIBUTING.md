@@ -2,20 +2,17 @@
 
 ## Princípios
 
-- Preserve o caráter genérico e reutilizável dos modelos.
-- Mantenha critérios de aceite, validações e limites de autonomia explícitos.
-- Preserve o planejamento como artefato anterior à especificação, com linguagem acessível às áreas técnicas e não técnicas.
-- Evite instruções redundantes ou dependentes de um projeto específico.
-- Atualize links internos e o `CHANGELOG.md` em mudanças relevantes.
+- Preserve o fluxo simples iniciado por uma issue.
+- Adicione regra apenas quando ela evitar um erro recorrente e observável.
+- Mantenha a documentação funcional orientada ao estado atual do sistema.
+- Evite novos gates, relatórios intermediários e instruções duplicadas.
+- Mantenha português do Brasil e placeholders genéricos.
 
-## Alterações em modelos e prompts
+## Antes de propor uma alteração
 
-1. Explique o problema que a alteração resolve.
-2. Prefira instruções curtas, observáveis e sem contradições.
-3. Preserve a compatibilidade de caminhos e placeholders quando possível.
-4. Preserve a relação entre `planning-<titulo>.md`, `specification-<titulo>.md`, `review-specification-<titulo>.md` e `review-<titulo>.md`, incluindo a rastreabilidade entre `RQ-*`, `CI-*`, `CA-*` e `VT-*`.
-5. Teste os links Markdown e confira o diff antes de propor a alteração.
+1. Explique qual problema recorrente a mudança resolve.
+2. Atualize exemplos e links afetados.
+3. Registre a alteração no `CHANGELOG.md`.
+4. Execute `git diff --check` e valide os links relativos.
 
-## Idioma
-
-Os artefatos principais são mantidos em português do Brasil. Termos técnicos consolidados em inglês, como Change Set, commit, branch e diff, podem ser preservados.
+Não faça commit sem solicitação explícita.

@@ -1,66 +1,90 @@
 # Change Set Playbook
 
-Modelos, prompts e guias para conduzir mudanças de engenharia assistidas por IA com rastreabilidade, revisão independente e validação.
+Um fluxo simples para desenvolver features e corrigir bugs com agentes de IA a partir de uma issue.
 
-## O que é uma Change Set?
+## Princípio
 
-Uma **Change Set** é uma unidade rastreável de mudança de engenharia: funcionalidade, correção, refatoração, investigação técnica ou alteração documental. Ela pode conter uma ou mais sessões com agentes de IA e um ou mais commits Git.
+Uma Change Set é o conjunto rastreável formado por:
 
 ```text
-Descoberta e planejamento → Especificação → Validação da especificação → Implementação
-→ Revisão independente → Correções iterativas → Aprovação → Pós-Change Set
+issue → implementação → testes → documentação funcional → PR → commit
 ```
 
-## Convenção de identificação
+A issue é a especificação inicial. Ela pode estar em um gerenciador externo, em `issues/` dentro do projeto ou ser fornecida integralmente no comando. O agente investiga, planeja, implementa e valida na mesma sessão, mantendo o contexto vivo. Documentos adicionais só são criados quando registram o comportamento atual do sistema ou uma decisão que precisa sobreviver à mudança.
 
-| Faixa | Formato | Exemplo |
-|---|---|---|
-| 1 a 999 | `CS-001` a `CS-999` | `CS-042` |
-| Após 999 | `CS-A01` a `CS-A99` | `CS-A01` |
-| Próximos blocos | `CS-B01`, `CS-C01` etc. | `CS-B01` |
+## Fluxo diário
 
-Os IDs ordenam alfabeticamente. A letra só passa a ser usada após `CS-999`.
+1. Escreva uma issue com problema, resultado esperado e, quando necessário, fora de escopo.
+2. Inicie o agente com a issue e o prompt [implement-issue.md](prompts/implement-issue.md).
+3. O agente investiga o código e os testes, apresenta um plano curto e implementa na mesma sessão.
+4. O agente executa validações proporcionais à mudança.
+5. Se o comportamento do sistema mudou, atualiza o documento correspondente em `docs/features/`.
+6. A revisão acontece sobre a issue, o diff, os testes e a documentação atualizada no PR.
 
-Sub-Change Sets que tiveram implementação e revisão próprias usam o ID do item principal seguido de um sufixo de dois dígitos: `CS-004-05`, `CS-004-06`. Eles não consomem um novo ID principal.
+O agente interrompe o trabalho apenas quando encontra comportamento realmente ambíguo, decisão de produto ausente, risco relevante para dados, segurança, dinheiro ou contrato externo, ou uma ação irreversível sem autorização.
 
-## Roteamento GPT-5.6
+## Artefatos
 
-| Etapa | Modelo | Esforço |
-|---|---|---|
-| Organização, documentação e trabalho mecânico | Luna | low / medium |
-| Planejamento, especificação e implementação normal | Terra | medium / high |
-| Arquitetura, segurança e revisão de alto risco | Sol | high / xhigh |
+| Artefato | Finalidade |
+|---|---|
+| Issue | Problema e resultado esperado; pode ser externa, local ou fornecida no comando. |
+| Plano da sessão | Roteiro curto e descartável para implementar a issue. |
+| `docs/features/<funcionalidade>.md` | Estado atual e evolução da funcionalidade. |
+| Pull request | Resumo da mudança, validações e revisão. |
+| Commit | Registro permanente da alteração. |
 
-> Luna executa; Terra desenvolve; Sol decide e audita.
-
-Consulte o [guia de roteamento](docs/model-routing/gpt-5.6-luna-terra-sol.md) para detalhes.
-
-Para o uso diário a partir de uma issue, consulte o [roteiro de issue a Change Set](docs/guides/workflow-issue-to-change-set.md).
+Não são exigidos documentos separados de planning, specification ou review.
 
 ## Estrutura
 
 ```text
-templates/change-set/   Modelos de planejamento, especificação, gates, revisão e pós-Change Set
-prompts/                Prompts reutilizáveis para tarefas operacionais
-docs/methodology/       Método e convenções
-docs/model-routing/     Uso dos modelos GPT-5.6
-docs/guides/            Guias de adoção e manutenção
-examples/               Exemplos fictícios completos
+docs/features/       documentação canônica das funcionalidades
+docs/guides/         adoção e manutenção do playbook
+docs/methodology/    definição do método
+issues/              issues locais, quando não houver gerenciador externo
+prompts/             prompt operacional único
+scripts/             instalação e atualização do kit em outros projetos
+templates/           modelos mínimos de issue, PR e funcionalidade
+examples/            exemplo completo e fictício
 ```
 
-## Convenção de nomes de arquivos
+Em `docs/features/`, organize documentos por domínio funcional, não por issue. O agente deve atualizar um arquivo existente antes de criar outro.
 
-Não crie arquivos ou diretórios com espaços no nome. Para os artefatos de uma Change Set, use o padrão `planning-<titulo>.md`, `specification-<titulo>.md`, `review-specification-<titulo>.md`, `review-<titulo>.md` e `post-change-set-<titulo>.md`. O `<titulo>` deve ser um slug em minúsculas, com palavras separadas por `_`, como `aviso_manutencao_programada`. Essa regra vale também para arquivos copiados dos modelos; títulos legíveis devem ficar dentro do conteúdo do arquivo, não no nome do caminho.
+## Arquivos para adotar no projeto
 
-## Uso rápido
+Copie para a codebase do projeto consumidor somente o kit operacional:
 
-1. Copie os modelos de `templates/change-set/` para `docs/change-sets/cs-[ID]/` no projeto-alvo. Use uma pasta própria para cada Sub-Change Set independente.
-2. Registre a descoberta e o planejamento em `planning-<titulo>.md`; depois preencha `specification-<titulo>.md`, incluindo requisitos `RQ-*`, matriz de rastreabilidade e validações `VT-*`.
-3. Faça a revisão pré-implementação independente em `review-specification-<titulo>.md`. Só uma revisão `APROVADA` permite marcar a especificação como `validada` e iniciar a implementação.
-4. Durante a implementação, registre evidências e resultados na matriz; então faça a revisão final em uma sessão independente.
-5. Execute o pós-Change Set somente após status `APROVADO`.
+```text
+templates/agents.md → AGENTS.md
+docs/features/README.md
+docs/guides/documentation-maintenance.md
+docs/methodology/change-set.md
+prompts/implement-issue.md
+templates/feature.md
+templates/issue.md
+templates/pull-request.md
+```
 
-O prompt para migrar documentação legada de “Sprint” para “Change Set” está em [prompts/migration-sprint-to-change-set.md](prompts/migration-sprint-to-change-set.md).
+O diretório `issues/` é necessário apenas quando a própria codebase armazenar as solicitações. O `AGENTS.md` da raiz, o README, o changelog e os exemplos deste repositório não fazem parte do kit.
+
+Veja as responsabilidades de cada arquivo e os cuidados de adaptação no [guia de adoção](docs/guides/project-adoption.md).
+
+Para instalar ou atualizar o kit automaticamente:
+
+```bash
+./scripts/setup-project.sh /caminho/do/projeto
+```
+
+Use `--dry-run` para simular e `--with-local-issues` para criar o diretório opcional `issues/`.
+
+## Começar
+
+1. Execute o script de setup ou copie o kit operacional e transforme [templates/agents.md](templates/agents.md) no `AGENTS.md` do projeto.
+2. Adote o [modelo de issue](templates/issue.md) no gerenciador externo ou em `issues/`, e o [modelo de pull request](templates/pull-request.md) quando houver PR.
+3. Crie a documentação das funcionalidades gradualmente com o [modelo de funcionalidade](templates/feature.md).
+4. Use o [prompt de implementação](prompts/implement-issue.md) para executar cada mudança.
+
+Consulte o [guia de adoção](docs/guides/project-adoption.md) para aplicar o fluxo em outro projeto.
 
 ## Licença
 

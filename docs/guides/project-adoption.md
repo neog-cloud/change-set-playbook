@@ -1,17 +1,139 @@
 # Adoção em um projeto
 
-Para o roteiro operacional completo, consulte o [guia de issue a Change Set](workflow-issue-to-change-set.md).
+## 1. Copie o kit da metodologia
 
-1. Crie `docs/change-sets/index.md` e a pasta da primeira Change Set.
-2. Copie os modelos de `templates/change-set/`.
-3. Preencha `planning-<titulo>.md` com o problema, caso de uso, contribuições das áreas envolvidas, decisões e dúvidas antes de criar a especificação.
-4. Registre requisitos `RQ-*`, comandos ou procedimentos literais de validação, resultados esperados e convenções específicas do projeto na especificação.
-5. Faça a revisão pré-implementação em `review-specification-<titulo>.md`; só então marque a especificação como `validada` e implemente.
-6. Durante a implementação, preencha a matriz de rastreabilidade com evidências obtidas e resultados de `VT-*`; use sessões independentes para a revisão final.
-7. Atualize o índice e a documentação estrutural no pós-Change Set.
+Adicione estes arquivos à codebase do projeto. O primeiro caminho mostra que o modelo deve ser copiado com outro nome:
 
-Ao criar os arquivos, use `planning-<titulo>.md`, `specification-<titulo>.md`, `review-specification-<titulo>.md`, `review-<titulo>.md` e `post-change-set-<titulo>.md`. Substitua `<titulo>` por um slug em minúsculas, com `_` no lugar de espaços, como `aviso_manutencao_programada`. Mantenha nomes legíveis, como “Relatório de Revisão”, no título do documento.
+```text
+templates/agents.md                 → AGENTS.md
+docs/
+├── features/
+│   └── README.md
+├── guides/
+│   └── documentation-maintenance.md
+└── methodology/
+    └── change-set.md
+prompts/
+└── implement-issue.md
+templates/
+├── feature.md
+├── issue.md
+└── pull-request.md
+```
 
-Quando uma Change Set possuir subitens com implementação e revisão próprias, crie uma pasta independente para cada Sub-Change Set, como `docs/change-sets/cs-004-05/`.
+Copie os demais arquivos preservando os caminhos. Se o projeto já possuir um `AGENTS.md`, incorpore nele as regras de `templates/agents.md` em vez de substituir o arquivo.
 
-Para um projeto que usa “Sprint”, utilize o prompt em `prompts/migration-sprint-to-change-set.md`.
+Cada arquivo tem uma responsabilidade:
+
+| Arquivo | Uso |
+|---|---|
+| `templates/agents.md` → `AGENTS.md` | Modelo das regras permanentes que o agente aplica em qualquer tarefa. |
+| `prompts/implement-issue.md` | Roteiro operacional usado a cada implementação. |
+| `templates/issue.md` | Estrutura mínima para descrever features, bugs e outras mudanças. |
+| `templates/feature.md` | Estrutura da documentação funcional permanente. |
+| `templates/pull-request.md` | Estrutura da entrega e das evidências de validação. |
+| `docs/features/README.md` | Regras de organização da documentação funcional. |
+| `docs/guides/documentation-maintenance.md` | Orientação humana sobre quando e onde documentar. |
+| `docs/methodology/change-set.md` | Definição resumida do método e de suas fontes de verdade. |
+
+O `AGENTS.md` da raiz, o `README.md`, o `CHANGELOG.md`, os exemplos e este guia pertencem ao repositório do playbook e não são necessários para executar o fluxo no projeto consumidor.
+
+Quando não houver um gerenciador externo de issues, acrescente também o diretório opcional:
+
+```text
+issues/
+└── issue_001_<titulo>.md
+```
+
+Os documentos de funcionalidades reais serão criados gradualmente em `docs/features/`; não copie os exemplos como documentação do projeto.
+
+### Instalação automatizada
+
+Execute o script a partir do repositório do playbook, informando o diretório base do projeto:
+
+```bash
+./scripts/setup-project.sh /caminho/do/projeto
+```
+
+Para conferir as operações antes de alterar o projeto:
+
+```bash
+./scripts/setup-project.sh --dry-run /caminho/do/projeto
+```
+
+Se as issues também forem armazenadas na codebase:
+
+```bash
+./scripts/setup-project.sh --with-local-issues /caminho/do/projeto
+```
+
+O script pode ser executado novamente quando o playbook mudar. Arquivos diferentes são atualizados, e suas versões anteriores ficam em `.change-set-playbook-backups/`. No `AGENTS.md`, somente o bloco delimitado por `change-set-playbook` é gerenciado; regras e comandos próprios do projeto devem permanecer fora dele.
+
+## 2. Adapte as regras permanentes
+
+Crie o `AGENTS.md` a partir de `templates/agents.md` e mantenha nele apenas regras que valem para qualquer tarefa do projeto. Preencha os comandos usuais de teste, lint e build.
+
+Não obrigue o agente a reler o README, todos os guias ou todos os modelos em cada mudança.
+
+## 3. Padronize as issues e pull requests
+
+Adote os modelos de [issue](../../templates/issue.md) e [pull request](../../templates/pull-request.md). A issue deve conseguir explicar o problema e o resultado observável sem antecipar a implementação.
+
+### Com gerenciador de issues
+
+Use o número ou link de GitHub, GitLab, Jira, Linear, Azure DevOps ou ferramenta equivalente. O agente precisa ter acesso ao conteúdo; se não tiver, forneça também o texto completo.
+
+```text
+Implemente a issue #142 seguindo prompts/implement-issue.md.
+```
+
+### Sem gerenciador de issues
+
+Para manter rastreabilidade na própria codebase, crie arquivos a partir de `templates/issue.md`:
+
+```text
+issues/
+├── issue_001_aviso_manutencao.md
+├── issue_002_corrigir_login.md
+└── issue_003_exportar_relatorio.md
+```
+
+Use um identificador sequencial, título em minúsculas e `_` entre as palavras. Execute assim:
+
+```text
+Implemente a issue descrita em issues/issue_002_corrigir_login.md
+seguindo prompts/implement-issue.md.
+```
+
+Mantenha o arquivo depois da conclusão quando ele for a fonte primária da solicitação. Referencie o identificador na mensagem do commit:
+
+```text
+fix: corrige validação de login
+
+Issue: issue_002
+```
+
+### Issue fornecida no próprio comando
+
+Para uma tarefa sem arquivo ou tracker, cole o conteúdo completo no comando:
+
+```text
+Siga prompts/implement-issue.md.
+
+Issue:
+[CONTEÚDO PREENCHIDO CONFORME templates/issue.md]
+```
+
+Essa opção executa o mesmo fluxo, mas a rastreabilidade dependerá do histórico da ferramenta que armazenar a conversa.
+
+## 4. Crie a documentação funcional
+
+Crie `docs/features/` e use o [modelo de funcionalidade](../../templates/feature.md). Documente somente funcionalidades cujo comportamento precise ser compreendido ou preservado ao longo do tempo.
+
+## 5. Execute a mudança
+
+Use [implement-issue.md](../../prompts/implement-issue.md). A mesma sessão investiga, planeja, implementa, testa e atualiza a documentação.
+
+## 6. Revise no pull request
+
+Confira o resultado esperado da issue, o diff, os testes e a documentação. Registre correções no PR ou no mecanismo de revisão disponível e mantenha o vínculo entre issue, revisão e commits.
