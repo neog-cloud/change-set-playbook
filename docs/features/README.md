@@ -2,7 +2,7 @@
 
 Esta pasta contém a fonte canônica do comportamento funcional atual do sistema.
 
-Antes de criar um arquivo, procure um documento que já represente o mesmo domínio funcional e atualize-o. Crie um novo somente quando a funcionalidade ainda não estiver documentada, usando o [modelo de funcionalidade](../../templates/feature.md).
+Antes de criar um arquivo, procure um documento que já represente o mesmo domínio funcional e atualize-o. Crie um novo somente quando a funcionalidade ainda não estiver documentada, usando o modelo de funcionalidade instalado em `.change-set/templates/feature.md`.
 
 Regras:
 

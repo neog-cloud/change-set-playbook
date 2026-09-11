@@ -9,6 +9,7 @@ readonly BLOCK_END='<!-- change-set-playbook:end -->'
 
 DRY_RUN=false
 WITH_LOCAL_ISSUES=false
+MIGRATE_LEGACY=false
 TARGET_INPUT=''
 BACKUP_DIR=''
 CREATED=0
@@ -18,16 +19,19 @@ UNCHANGED=0
 usage() {
   cat <<'EOF'
 Uso:
-  scripts/setup-project.sh [--dry-run] [--with-local-issues] DIRETORIO_DO_PROJETO
+  scripts/setup-project.sh [--dry-run] [--with-local-issues] [--migrate-legacy] DIRETORIO_DO_PROJETO
 
 Opções:
   --dry-run            Mostra as alterações sem modificar o projeto.
-  --with-local-issues  Cria o diretório issues/ para solicitações locais.
+  --with-local-issues  Cria .change-set/issues/ para solicitações locais.
+  --migrate-legacy     Move arquivos do layout anterior para .change-set/. Use
+                       somente para uma instalação anterior do playbook.
   -h, --help           Exibe esta ajuda.
 
 O script pode ser executado novamente para atualizar o kit. Arquivos alterados são
-copiados para .change-set-playbook-backups/ antes de serem substituídos. Conteúdo
-próprio do AGENTS.md fora do bloco gerenciado é preservado.
+copiados para .change-set-playbook-backups/ antes de serem substituídos. O kit fica
+em .change-set/, exceto AGENTS.md e docs/features/. Conteúdo próprio do AGENTS.md
+fora do bloco gerenciado é preservado.
 EOF
 }
 
@@ -47,6 +51,9 @@ while (($# > 0)); do
       ;;
     --with-local-issues)
       WITH_LOCAL_ISSUES=true
+      ;;
+    --migrate-legacy)
+      MIGRATE_LEGACY=true
       ;;
     -h|--help)
       usage
@@ -76,13 +83,22 @@ readonly TARGET_DIR="$(CDPATH= cd -- "${TARGET_INPUT}" && pwd)"
 [[ "${TARGET_DIR}" != "${PLAYBOOK_DIR}" ]] || fail 'o destino não pode ser o próprio repositório do playbook'
 
 readonly -a MANAGED_FILES=(
-  'docs/features/README.md'
-  'docs/guides/documentation-maintenance.md'
-  'docs/methodology/change-set.md'
-  'prompts/implement-issue.md'
-  'templates/feature.md'
-  'templates/issue.md'
-  'templates/pull-request.md'
+  'docs/features/README.md:docs/features/README.md'
+  'docs/guides/documentation-maintenance.md:.change-set/guides/documentation-maintenance.md'
+  'docs/methodology/change-set.md:.change-set/methodology/change-set.md'
+  'prompts/implement-issue.md:.change-set/prompts/implement-issue.md'
+  'templates/feature.md:.change-set/templates/feature.md'
+  'templates/issue.md:.change-set/templates/issue.md'
+  'templates/pull-request.md:.change-set/templates/pull-request.md'
+)
+
+readonly -a LEGACY_FILES=(
+  'docs/guides/documentation-maintenance.md:.change-set/guides/documentation-maintenance.md'
+  'docs/methodology/change-set.md:.change-set/methodology/change-set.md'
+  'prompts/implement-issue.md:.change-set/prompts/implement-issue.md'
+  'templates/feature.md:.change-set/templates/feature.md'
+  'templates/issue.md:.change-set/templates/issue.md'
+  'templates/pull-request.md:.change-set/templates/pull-request.md'
 )
 
 ensure_backup_dir() {
@@ -102,15 +118,16 @@ backup_file() {
 }
 
 install_managed_file() {
-  local relative_path="$1"
-  local source="${PLAYBOOK_DIR}/${relative_path}"
-  local destination="${TARGET_DIR}/${relative_path}"
+  local source_path="$1"
+  local destination_path="$2"
+  local source="${PLAYBOOK_DIR}/${source_path}"
+  local destination="${TARGET_DIR}/${destination_path}"
 
   [[ -f "${source}" ]] || fail "arquivo do playbook não encontrado: ${source}"
   [[ ! -L "${destination}" ]] || fail "link simbólico não será substituído: ${destination}"
 
   if [[ -f "${destination}" ]] && cmp -s -- "${source}" "${destination}"; then
-    log "inalterado  ${relative_path}"
+    log "inalterado  ${destination_path}"
     ((UNCHANGED += 1))
     return
   fi
@@ -120,19 +137,49 @@ install_managed_file() {
   fi
 
   if [[ -f "${destination}" ]]; then
-    log "atualizar    ${relative_path}"
+    log "atualizar    ${destination_path}"
     if [[ "${DRY_RUN}" == false ]]; then
-      backup_file "${relative_path}"
+      backup_file "${destination_path}"
       install -D -m 0644 -- "${source}" "${destination}"
     fi
     ((UPDATED += 1))
   else
-    log "criar        ${relative_path}"
+    log "criar        ${destination_path}"
     if [[ "${DRY_RUN}" == false ]]; then
       install -D -m 0644 -- "${source}" "${destination}"
     fi
     ((CREATED += 1))
   fi
+}
+
+migrate_legacy_files() {
+  local mapping
+  local legacy_path
+  local destination_path
+  local legacy
+  local destination
+
+  for mapping in "${LEGACY_FILES[@]}"; do
+    legacy_path="${mapping%%:*}"
+    destination_path="${mapping#*:}"
+    legacy="${TARGET_DIR}/${legacy_path}"
+    destination="${TARGET_DIR}/${destination_path}"
+
+    [[ -e "${legacy}" || -L "${legacy}" ]] || continue
+    [[ ! -L "${legacy}" && -f "${legacy}" ]] || fail "arquivo legado inválido: ${legacy_path}"
+    if [[ -e "${destination}" || -L "${destination}" ]]; then
+      [[ ! -L "${destination}" && -f "${destination}" ]] || fail "destino de migração inválido: ${destination_path}"
+      cmp -s -- "${legacy}" "${destination}" || fail "conflito entre ${legacy_path} e ${destination_path}"
+      log "remover legado  ${legacy_path} (já migrado)"
+      [[ "${DRY_RUN}" == true ]] || rm -- "${legacy}"
+    else
+      log "migrar       ${legacy_path} -> ${destination_path}"
+      if [[ "${DRY_RUN}" == false ]]; then
+        mkdir -p -- "$(dirname -- "${destination}")"
+        mv -- "${legacy}" "${destination}"
+      fi
+    fi
+  done
 }
 
 render_agents_file() {
@@ -243,16 +290,19 @@ log "Projeto: ${TARGET_DIR}"
 [[ "${DRY_RUN}" == false ]] || log 'Modo: simulação'
 
 install_agents_file
-for relative_path in "${MANAGED_FILES[@]}"; do
-  install_managed_file "${relative_path}"
+if [[ "${MIGRATE_LEGACY}" == true ]]; then
+  migrate_legacy_files
+fi
+for mapping in "${MANAGED_FILES[@]}"; do
+  install_managed_file "${mapping%%:*}" "${mapping#*:}"
 done
 
 if [[ "${WITH_LOCAL_ISSUES}" == true ]]; then
-  if [[ -d "${TARGET_DIR}/issues" ]]; then
-    log 'inalterado  issues/'
+  if [[ -d "${TARGET_DIR}/.change-set/issues" ]]; then
+    log 'inalterado  .change-set/issues/'
   else
-    log 'criar        issues/'
-    [[ "${DRY_RUN}" == true ]] || mkdir -p -- "${TARGET_DIR}/issues"
+    log 'criar        .change-set/issues/'
+    [[ "${DRY_RUN}" == true ]] || mkdir -p -- "${TARGET_DIR}/.change-set/issues"
   fi
 fi
 

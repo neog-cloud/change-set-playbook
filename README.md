@@ -10,12 +10,12 @@ Uma Change Set é o conjunto rastreável formado por:
 issue → implementação → testes → documentação funcional → PR → commit
 ```
 
-A issue é a especificação inicial. Ela pode estar em um gerenciador externo, em `issues/` dentro do projeto ou ser fornecida integralmente no comando. O agente investiga, planeja, implementa e valida na mesma sessão, mantendo o contexto vivo. Documentos adicionais só são criados quando registram o comportamento atual do sistema ou uma decisão que precisa sobreviver à mudança.
+A issue é a especificação inicial. Ela pode estar em um gerenciador externo, em `.change-set/issues/` dentro do projeto ou ser fornecida integralmente no comando. O agente investiga, planeja, implementa e valida na mesma sessão, mantendo o contexto vivo. Documentos adicionais só são criados quando registram o comportamento atual do sistema ou uma decisão que precisa sobreviver à mudança.
 
 ## Fluxo diário
 
 1. Escreva uma issue com problema, resultado esperado e, quando necessário, fora de escopo.
-2. Inicie o agente com a issue e o prompt [implement-issue.md](prompts/implement-issue.md).
+2. Inicie o agente com a issue e o prompt instalado em `.change-set/prompts/implement-issue.md`.
 3. O agente investiga o código e os testes, apresenta um plano curto e implementa na mesma sessão.
 4. O agente executa validações proporcionais à mudança.
 5. Se o comportamento do sistema mudou, atualiza o documento correspondente em `docs/features/`.
@@ -39,10 +39,7 @@ Não são exigidos documentos separados de planning, specification ou review.
 
 ```text
 docs/features/       documentação canônica das funcionalidades
-docs/guides/         adoção e manutenção do playbook
-docs/methodology/    definição do método
-issues/              issues locais, quando não houver gerenciador externo
-prompts/             prompt operacional único
+.change-set/         kit isolado: guias, método, prompts, modelos e issues locais
 scripts/             instalação e atualização do kit em outros projetos
 templates/           modelos mínimos de issue, PR e funcionalidade
 examples/            exemplo completo e fictício
@@ -57,15 +54,15 @@ Copie para a codebase do projeto consumidor somente o kit operacional:
 ```text
 templates/agents.md → AGENTS.md
 docs/features/README.md
-docs/guides/documentation-maintenance.md
-docs/methodology/change-set.md
-prompts/implement-issue.md
-templates/feature.md
-templates/issue.md
-templates/pull-request.md
+.change-set/guides/documentation-maintenance.md
+.change-set/methodology/change-set.md
+.change-set/prompts/implement-issue.md
+.change-set/templates/feature.md
+.change-set/templates/issue.md
+.change-set/templates/pull-request.md
 ```
 
-O diretório `issues/` é necessário apenas quando a própria codebase armazenar as solicitações. O `AGENTS.md` da raiz, o README, o changelog e os exemplos deste repositório não fazem parte do kit.
+O diretório `.change-set/issues/` é necessário apenas quando a própria codebase armazenar as solicitações. O `AGENTS.md` da raiz, o README, o changelog e os exemplos deste repositório não fazem parte do kit.
 
 Veja as responsabilidades de cada arquivo e os cuidados de adaptação no [guia de adoção](docs/guides/project-adoption.md).
 
@@ -75,14 +72,14 @@ Para instalar ou atualizar o kit automaticamente:
 ./scripts/setup-project.sh /caminho/do/projeto
 ```
 
-Use `--dry-run` para simular e `--with-local-issues` para criar o diretório opcional `issues/`.
+Use `--dry-run` para simular, `--with-local-issues` para criar `.change-set/issues/` e `--migrate-legacy` para migrar instalações anteriores com segurança.
 
 ## Começar
 
 1. Execute o script de setup ou copie o kit operacional e transforme [templates/agents.md](templates/agents.md) no `AGENTS.md` do projeto.
-2. Adote o [modelo de issue](templates/issue.md) no gerenciador externo ou em `issues/`, e o [modelo de pull request](templates/pull-request.md) quando houver PR.
-3. Crie a documentação das funcionalidades gradualmente com o [modelo de funcionalidade](templates/feature.md).
-4. Use o [prompt de implementação](prompts/implement-issue.md) para executar cada mudança.
+2. Adote os modelos de issue e pull request em `.change-set/templates/`; use `.change-set/issues/` apenas sem um gerenciador externo.
+3. Crie a documentação das funcionalidades gradualmente com `.change-set/templates/feature.md`.
+4. Use `.change-set/prompts/implement-issue.md` para executar cada mudança.
 
 Consulte o [guia de adoção](docs/guides/project-adoption.md) para aplicar o fluxo em outro projeto.
 

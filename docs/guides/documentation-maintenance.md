@@ -19,7 +19,7 @@ Cada atualização deve incluir a referência à issue ou ao PR na seção “Ev
 | Diretório | Conteúdo |
 |---|---|
 | `docs/features/` | Comportamento atual de funcionalidades, organizado por domínio. |
-| `docs/guides/` | Instruções operacionais destinadas a pessoas. |
-| `docs/methodology/` | Métodos e convenções de engenharia. |
+| `.change-set/guides/` | Instruções operacionais destinadas a pessoas. |
+| `.change-set/methodology/` | Métodos e convenções de engenharia. |
 
 Não crie um documento funcional por issue. Procure primeiro um arquivo existente do mesmo domínio e atualize-o; crie outro somente quando nenhuma documentação existente representar a funcionalidade.

@@ -30,10 +30,10 @@ Atualize o plano durante a execução quando o código revelar uma premissa inco
 - Use `docs/features/` para documentar o comportamento atual das funcionalidades.
 - Antes de criar um arquivo, procure a documentação existente da mesma funcionalidade e atualize-a.
 - Não crie um documento por issue; organize os arquivos por domínio funcional, como `autenticacao.md`, `faturamento.md` ou `notificacoes.md`.
-- Ao criar uma funcionalidade nova, use `templates/feature.md`.
+- Ao criar uma funcionalidade nova, use `.change-set/templates/feature.md`.
 - Use nomes em minúsculas, sem espaços e com `_` entre as palavras.
-- Use `docs/guides/` somente para instruções operacionais destinadas a pessoas.
-- Use `docs/methodology/` somente para métodos e convenções de engenharia.
+- Use `.change-set/guides/` somente para instruções operacionais destinadas a pessoas.
+- Use `.change-set/methodology/` somente para métodos e convenções de engenharia.
 - Registre a issue ou o PR na seção “Evolução” do documento funcional.
 
 ### Quando pedir direção
