@@ -85,6 +85,8 @@ Crie o `AGENTS.md` a partir de `templates/agents.md` e mantenha nele apenas regr
 
 Não obrigue o agente a reler o README, todos os guias ou todos os modelos em cada mudança.
 
+O modelo autoriza o uso, sem confirmação individual, de comandos rotineiros de leitura e validação com `git` e `gh`. Essa instrução orienta o agente, mas não substitui as permissões do ambiente: prompts de segurança, especialmente para rede, escrita externa, `commit`, `push`, merge, publicação, exclusões ou outras ações irreversíveis, continuam dependendo da configuração da ferramenta e da sessão.
+
 ## 3. Padronize as issues e pull requests
 
 Adote os modelos de issue e pull request em `.change-set/templates/`. A issue deve conseguir explicar o problema e o resultado observável sem antecipar a implementação.
