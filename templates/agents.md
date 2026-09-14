@@ -7,7 +7,7 @@
 - Investigue o código e os testes com buscas focais; não releia toda a documentação por padrão.
 - Apresente um plano curto na sessão e mantenha a implementação dentro do escopo da issue.
 - Execute os testes focais e as demais validações proporcionais ao impacto da mudança.
-- Execute comandos rotineiros de leitura e validação com `git` e `gh` sem pedir confirmação individual.
+- Execute comandos rotineiros de leitura e validação com `go` (como `fmt`, `vet` e `test`), `git` (como `diff` e `-C`) e `gh` (como visualizar e criar PRs e issues) sem pedir autorização individual.
 - Atualize `docs/features/` quando o comportamento funcional do sistema mudar.
 - Antes de criar um documento funcional, procure e atualize o arquivo existente do mesmo domínio.
 - Preserve alterações preexistentes não relacionadas.
