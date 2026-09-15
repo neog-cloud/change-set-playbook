@@ -17,7 +17,7 @@
 - Não faça commit, push, merge ou publicação sem solicitação explícita.
 - Mantenha confirmação explícita para exclusões e outras ações externas ou irreversíveis.
 - Ao concluir, informe os arquivos alterados, as validações executadas e as pendências.
-  <!-- change-set-playbook:end -->
+<!-- change-set-playbook:end -->
 
 ## Comandos do projeto
 
