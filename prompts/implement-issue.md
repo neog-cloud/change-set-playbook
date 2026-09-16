@@ -23,14 +23,7 @@ Leia o `AGENTS.md` do projeto e a issue. Não leia o README, todos os guias ou t
 5. Corrija falhas causadas pela alteração e revise o diff final.
 6. Se o comportamento funcional mudou, procure e atualize o documento correspondente em `docs/features/`. Crie um documento somente quando nenhum existente representar a funcionalidade e registre a issue ou PR na seção “Evolução”.
 
-### Encerramento após a confirmação da PR
-
-Quando a pull request for confirmada (aprovada e integrada, conforme o fluxo do projeto), conclua o ciclo nesta ordem:
-
-1. Confira o estado da PR e confirme que ela está realmente integrada ou pronta para encerramento.
-2. Encerre as issues envolvidas, verificando antes se não há pendências ou outra PR ainda aberta vinculada a elas.
-3. Encerre e remova a worktree da implementação, preservando qualquer alteração que ainda precise ser mantida.
-4. Volte para a `main` e atualize-a com a origem (`git pull --ff-only` ou o comando equivalente do projeto).
+Ao terminar esta sessão, deixe a implementação validada e o diff pronto para revisão. A criação da PR, o commit, o push e o encerramento do ciclo são tarefas do prompt separado [finalize-issue.md](finalize-issue.md). Não tente encerrar a issue, remover a worktree ou atualizar a `main` nesta etapa.
 
 Atualize o plano durante a execução quando o código revelar uma premissa incorreta. Não crie documentos intermediários para registrar o plano.
 

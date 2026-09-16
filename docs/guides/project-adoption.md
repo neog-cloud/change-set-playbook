@@ -15,7 +15,8 @@ docs/
 ├── methodology/
 │   └── change-set.md
 ├── prompts/
-│   └── implement-issue.md
+│   ├── implement-issue.md
+│   └── finalize-issue.md
 └── templates/
     ├── feature.md
     ├── issue.md
@@ -30,6 +31,7 @@ Cada arquivo tem uma responsabilidade:
 |---|---|
 | `templates/agents.md` → `AGENTS.md` | Modelo das regras permanentes que o agente aplica em qualquer tarefa. |
 | `.change-set/prompts/implement-issue.md` | Roteiro operacional usado a cada implementação. |
+| `.change-set/prompts/finalize-issue.md` | Roteiro para validar, publicar e encerrar uma implementação em etapas. |
 | `.change-set/templates/issue.md` | Estrutura mínima para descrever features, bugs e outras mudanças. |
 | `.change-set/templates/feature.md` | Estrutura da documentação funcional permanente. |
 | `.change-set/templates/pull-request.md` | Estrutura da entrega e das evidências de validação. |
@@ -145,6 +147,20 @@ Crie `docs/features/` e use `.change-set/templates/feature.md`. Documente soment
 ## 5. Execute a mudança
 
 Use `.change-set/prompts/implement-issue.md`. A mesma sessão investiga, planeja, implementa, testa e atualiza a documentação.
+
+Quando a implementação estiver pronta para revisão, use `.change-set/prompts/finalize-issue.md`. Esse prompt cria ou atualiza a PR, faz o commit e o push e para enquanto a PR estiver aberta. Depois da integração, invoque-o novamente para encerrar as issues, remover a worktree e atualizar a `main`.
+
+Exemplo da primeira invocação:
+
+```text
+Siga .change-set/prompts/finalize-issue.md.
+
+Issue: #142
+PR: ainda não criada
+Contexto adicional: a implementação já foi validada na worktree atual.
+```
+
+Após a integração, informe a mesma issue e PR novamente para que o prompt confirme o estado remoto antes de encerrar o ciclo.
 
 ## 6. Revise no pull request
 

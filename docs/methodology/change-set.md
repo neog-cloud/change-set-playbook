@@ -5,10 +5,12 @@ Uma Change Set é uma mudança de engenharia rastreada pela issue que a originou
 ## Fluxo
 
 ```text
-Issue → investigar → planejar → implementar → validar → documentar → revisar no PR
+Issue → investigar → planejar → implementar → validar → documentar → commit/push → PR → integrar → encerrar
 ```
 
 Investigação, plano, implementação e validação devem permanecer na mesma sessão sempre que possível. Isso reduz perda de contexto e permite que o plano seja corrigido quando o código real revelar uma premissa incorreta.
+
+A implementação e o encerramento da entrega são etapas separadas. `implement-issue.md` deixa a mudança pronta para revisão; `finalize-issue.md` publica o commit e a PR e, somente depois da integração confirmada, encerra as issues, remove a worktree e atualiza a branch principal. Se a PR ainda estiver aberta, o segundo prompt deve parar após publicar a entrega.
 
 ## Fonte de verdade por assunto
 

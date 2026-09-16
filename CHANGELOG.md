@@ -6,6 +6,7 @@ Todas as mudanças relevantes deste repositório serão registradas neste arquiv
 
 ### Changed
 
+- O fluxo separa a implementação da finalização da entrega, com checkpoints explícitos para commit, push, PR integrada, encerramento das issues, remoção da worktree e atualização da `main`.
 - O playbook foi refeito como um fluxo único baseado em issue, implementação, testes, documentação funcional e pull request.
 - A issue passou a ser a especificação inicial e a referência primária de rastreabilidade.
 - Planejamento, implementação e validação passam a ocorrer na mesma sessão com contexto vivo.
@@ -17,6 +18,7 @@ Todas as mudanças relevantes deste repositório serão registradas neste arquiv
 ### Added
 
 - Prompt único para implementar uma issue.
+- Prompt para finalizar uma issue implementada e publicar ou encerrar a entrega em etapas.
 - Modelos mínimos de issue, pull request e documentação funcional.
 - Modelo de `AGENTS.md` para instalação no projeto consumidor.
 - Script Bash idempotente para instalar e atualizar o kit em um projeto, com simulação e backup.

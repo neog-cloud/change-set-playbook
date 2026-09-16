@@ -10,6 +10,7 @@
 - Execute os testes focais e as demais validações proporcionais ao impacto da mudança.
 - Execute comandos rotineiros de leitura e validação com `go` (como `fmt`, `vet` e `test`), `git` (como `diff` e `-C`) e `gh` (como visualizar e criar PRs e issues) sem pedir autorização individual.
 - Ao concluir uma rodada de implementação, está autorizado executar `go test ...`, `gh pr create ...`, `gh pr edit ...`, `gh pr list ...`, `gh pr status`, `gh pr checks`, `gh issue close ...`, `git worktree list`, `git -C PATH worktree remove`, `git switch main`, `git pull --ff-only` e `gofmt ...` sem solicitar aprovação adicional.
+- A invocação explícita de `.change-set/prompts/finalize-issue.md` constitui solicitação para registrar e publicar a implementação validada, respeitando os checkpoints e limites desse prompt.
 - Atualize `docs/features/` quando o comportamento funcional do sistema mudar.
 - Antes de criar um documento funcional, procure e atualize o arquivo existente do mesmo domínio.
 - Preserve alterações preexistentes não relacionadas.
