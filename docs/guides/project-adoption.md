@@ -16,7 +16,8 @@ docs/
 │   └── change-set.md
 ├── prompts/
 │   ├── implement-issue.md
-│   └── finalize-issue.md
+│   ├── finalize-issue.md
+│   └── migrate-sprint-to-change-set.md
 └── templates/
     ├── feature.md
     ├── issue.md
@@ -32,6 +33,7 @@ Cada arquivo tem uma responsabilidade:
 | `templates/agents.md` → `AGENTS.md` | Modelo das regras permanentes que o agente aplica em qualquer tarefa. |
 | `.change-set/prompts/implement-issue.md` | Roteiro operacional usado a cada implementação. |
 | `.change-set/prompts/finalize-issue.md` | Roteiro para validar, publicar e encerrar uma implementação em etapas. |
+| `.change-set/prompts/migrate-sprint-to-change-set.md` | Migração inicial de projetos que ainda usam o modelo Sprint. |
 | `.change-set/templates/issue.md` | Estrutura mínima para descrever features, bugs e outras mudanças. |
 | `.change-set/templates/feature.md` | Estrutura da documentação funcional permanente. |
 | `.change-set/templates/pull-request.md` | Estrutura da entrega e das evidências de validação. |
@@ -80,6 +82,8 @@ Para migrar uma instalação feita com o layout anterior, simule e depois execut
 ```
 
 Use `--migrate-legacy` somente quando os caminhos antigos pertencerem a uma instalação anterior do playbook. Ele interrompe a execução diante de conflitos no destino, sem remover nenhum arquivo; arquivos migrados que diferirem da versão atual são preservados no backup antes da atualização.
+
+Se o projeto usa o modelo Sprint, depois de instalar o kit invoque `.change-set/prompts/migrate-sprint-to-change-set.md` para adaptar instruções, prompts, templates e referências do próprio projeto.
 
 ## 2. Adapte as regras permanentes
 
