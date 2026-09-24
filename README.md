@@ -59,6 +59,7 @@ docs/features/README.md
 .change-set/methodology/change-set.md
 .change-set/prompts/implement-issue.md
 .change-set/prompts/finalize-issue.md
+.change-set/prompts/migrate-sprint-to-change-set.md
 .change-set/templates/feature.md
 .change-set/templates/issue.md
 .change-set/templates/pull-request.md
@@ -82,6 +83,8 @@ Use `--dry-run` para simular, `--with-local-issues` para criar `.change-set/issu
 2. Adote os modelos de issue e pull request em `.change-set/templates/`; use `.change-set/issues/` apenas sem um gerenciador externo.
 3. Crie a documentação das funcionalidades gradualmente com `.change-set/templates/feature.md`.
 4. Use `.change-set/prompts/implement-issue.md` para executar cada mudança e `.change-set/prompts/finalize-issue.md` para publicar e encerrar o ciclo.
+
+Se o projeto ainda usar o modelo Sprint, faça a adaptação inicial com `.change-set/prompts/migrate-sprint-to-change-set.md`.
 
 Consulte o [guia de adoção](docs/guides/project-adoption.md) para aplicar o fluxo em outro projeto.
 
