@@ -40,15 +40,14 @@ Execute esta etapa somente quando o estado remoto confirmar que a PR foi integra
 
 1. Confira novamente o estado da PR e confirme o merge, a branch de destino e o commit integrado.
 2. Verifique se não há pendências nem outra PR aberta vinculada à issue. Só então encerre as issues envolvidas, quando o gerenciador e o fluxo do projeto permitirem.
-3. Confira `git status` na worktree da implementação. Remova a worktree somente se ela estiver limpa e o commit estiver publicado e integrado. Se houver alterações locais, preserve-as e pare antes da remoção.
-4. Na worktree principal, mude para `main` (ou a branch principal configurada pelo projeto) e atualize-a com a origem usando `git pull --ff-only` ou o comando equivalente.
-5. Confirme o estado final: branch principal atualizada, worktree limpa, PR integrada, issue encerrada quando aplicável e nenhum commit da implementação restrito ao ambiente local.
+3. Confirme que o commit integrado está publicado e que não há commit da implementação restrito ao ambiente local. Preserve a worktree e as branches para consulta futura; não atualize a branch principal nem remova worktrees ou branches neste fluxo.
+4. Informe que, se o desenvolvedor quiser atualizar a branch principal e limpar a worktree e as branches, pode executar [cleanup-merged-issue.md](cleanup-merged-issue.md) separadamente a partir da worktree principal, com a branch principal ativa.
 
 ### Regras de segurança
 
 - A invocação explícita deste prompt autoriza o commit e o push da implementação descrita na entrada, mas não autoriza incluir alterações preexistentes ou não relacionadas.
 - Uma PR integrada deve ser considerada encerrada pelo fluxo de merge; não feche manualmente uma PR aberta para simular a integração.
-- Não faça merge, feche uma PR não integrada, remova worktree suja, force push ou descarte alterações.
+- Não faça merge, feche uma PR não integrada, atualize a branch principal, remova worktrees ou branches, force push ou descarte alterações.
 - Diante de falha de teste, divergência entre issue, PR e branch, conflito, permissão ausente ou estado remoto inesperado, pare na etapa atual e informe a pendência concreta.
 
 ### Entrega
@@ -59,5 +58,5 @@ Ao concluir, informe:
 - commit criado ou confirmado e evidência de que foi publicado;
 - validações executadas e resultados;
 - estado da PR e das issues;
-- worktree removida ou preservada, com o motivo;
-- estado da `main` e pendências ou riscos residuais.
+- worktree e branches preservadas para consulta futura;
+- pendências ou riscos residuais, incluindo a opção de executar `cleanup-merged-issue.md` separadamente.

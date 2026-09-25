@@ -4,6 +4,6 @@ Use [migrate-sprint-to-change-set.md](migrate-sprint-to-change-set.md) uma vez a
 
 Use [implement-issue.md](implement-issue.md) para investigar, implementar, validar e documentar uma feature, correção ou refatoração a partir de uma issue.
 
-Depois que a implementação estiver pronta, use [finalize-issue.md](finalize-issue.md) para conferir a entrega, criar ou atualizar a PR, registrar e publicar o commit e, somente após a integração, encerrar as issues, remover a worktree e atualizar a `main`.
+Depois que a implementação estiver pronta, use [finalize-issue.md](finalize-issue.md) para conferir a entrega, criar ou atualizar a PR, registrar e publicar o commit e, somente após a integração, encerrar as issues. A atualização da `main` e a remoção da worktree e das branches são opcionais e ficam para uma execução separada de [cleanup-merged-issue.md](cleanup-merged-issue.md), iniciada na worktree principal com a branch principal ativa.
 
 Os prompts separam a implementação da entrega porque a PR pode permanecer aberta entre essas duas etapas. Não exigem planning, specification ou review separados.
