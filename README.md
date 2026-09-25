@@ -59,6 +59,7 @@ docs/features/README.md
 .change-set/methodology/change-set.md
 .change-set/prompts/implement-issue.md
 .change-set/prompts/finalize-issue.md
+.change-set/prompts/cleanup-merged-issue.md
 .change-set/prompts/migrate-sprint-to-change-set.md
 .change-set/templates/feature.md
 .change-set/templates/issue.md

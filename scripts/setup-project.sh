@@ -88,6 +88,7 @@ readonly -a MANAGED_FILES=(
   'docs/methodology/change-set.md:.change-set/methodology/change-set.md'
   'prompts/implement-issue.md:.change-set/prompts/implement-issue.md'
   'prompts/finalize-issue.md:.change-set/prompts/finalize-issue.md'
+  'prompts/cleanup-merged-issue.md:.change-set/prompts/cleanup-merged-issue.md'
   'prompts/migrate-sprint-to-change-set.md:.change-set/prompts/migrate-sprint-to-change-set.md'
   'templates/feature.md:.change-set/templates/feature.md'
   'templates/issue.md:.change-set/templates/issue.md'

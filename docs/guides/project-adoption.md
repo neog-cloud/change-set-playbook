@@ -17,6 +17,7 @@ docs/
 ├── prompts/
 │   ├── implement-issue.md
 │   ├── finalize-issue.md
+│   ├── cleanup-merged-issue.md
 │   └── migrate-sprint-to-change-set.md
 └── templates/
     ├── feature.md
@@ -33,6 +34,7 @@ Cada arquivo tem uma responsabilidade:
 | `templates/agents.md` → `AGENTS.md` | Modelo das regras permanentes que o agente aplica em qualquer tarefa. |
 | `.change-set/prompts/implement-issue.md` | Roteiro operacional usado a cada implementação. |
 | `.change-set/prompts/finalize-issue.md` | Roteiro para validar, publicar e encerrar uma implementação em etapas. |
+| `.change-set/prompts/cleanup-merged-issue.md` | Atualiza a branch principal local e limpa a worktree e as branches de uma issue integrada. |
 | `.change-set/prompts/migrate-sprint-to-change-set.md` | Migração inicial de projetos que ainda usam o modelo Sprint. |
 | `.change-set/templates/issue.md` | Estrutura mínima para descrever features, bugs e outras mudanças. |
 | `.change-set/templates/feature.md` | Estrutura da documentação funcional permanente. |
